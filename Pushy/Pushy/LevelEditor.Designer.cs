@@ -29,7 +29,21 @@
         private void InitializeComponent()
         {
             this.lbMauer = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbKasten = new System.Windows.Forms.Label();
+            this.lbKnopf = new System.Windows.Forms.Label();
+            this.lbKugel = new System.Windows.Forms.Label();
+            this.lbKugelZiel = new System.Windows.Forms.Label();
+            this.lbHaus = new System.Windows.Forms.Label();
+            this.lbBarrier = new System.Windows.Forms.Label();
+            this.cBoxFarbe = new System.Windows.Forms.ComboBox();
+            this.lbTeleporter = new System.Windows.Forms.Label();
+            this.numIndex = new System.Windows.Forms.NumericUpDown();
+            this.cBoxIsKnopfMauer = new System.Windows.Forms.CheckBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSpeichern = new System.Windows.Forms.Button();
+            this.btnClearen = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.numIndex)).BeginInit();
             this.SuspendLayout();
             // 
             // lbMauer
@@ -39,59 +53,178 @@
             this.lbMauer.Name = "lbMauer";
             this.lbMauer.Size = new System.Drawing.Size(37, 13);
             this.lbMauer.TabIndex = 0;
+            this.lbMauer.Tag = "";
             this.lbMauer.Text = "Mauer";
-            this.lbMauer.Click += new System.EventHandler(this.lbMauer_Click);
+            this.lbMauer.Click += new System.EventHandler(this.label_Click);
             // 
-            // tableLayoutPanel1
+            // panel1
             // 
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 20;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(74, 30);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(641, 344);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(175, 25);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(400, 400);
+            this.panel1.TabIndex = 1;
+            this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            // 
+            // lbKasten
+            // 
+            this.lbKasten.AutoSize = true;
+            this.lbKasten.Location = new System.Drawing.Point(38, 400);
+            this.lbKasten.Name = "lbKasten";
+            this.lbKasten.Size = new System.Drawing.Size(40, 13);
+            this.lbKasten.TabIndex = 2;
+            this.lbKasten.Text = "Kasten";
+            this.lbKasten.Click += new System.EventHandler(this.label_Click);
+            // 
+            // lbKnopf
+            // 
+            this.lbKnopf.AutoSize = true;
+            this.lbKnopf.Location = new System.Drawing.Point(38, 375);
+            this.lbKnopf.Name = "lbKnopf";
+            this.lbKnopf.Size = new System.Drawing.Size(35, 13);
+            this.lbKnopf.TabIndex = 3;
+            this.lbKnopf.Text = "Knopf";
+            this.lbKnopf.Click += new System.EventHandler(this.label_Click);
+            // 
+            // lbKugel
+            // 
+            this.lbKugel.AutoSize = true;
+            this.lbKugel.Location = new System.Drawing.Point(38, 353);
+            this.lbKugel.Name = "lbKugel";
+            this.lbKugel.Size = new System.Drawing.Size(34, 13);
+            this.lbKugel.TabIndex = 4;
+            this.lbKugel.Text = "Kugel";
+            this.lbKugel.Click += new System.EventHandler(this.label_Click);
+            // 
+            // lbKugelZiel
+            // 
+            this.lbKugelZiel.AutoSize = true;
+            this.lbKugelZiel.Location = new System.Drawing.Point(38, 329);
+            this.lbKugelZiel.Name = "lbKugelZiel";
+            this.lbKugelZiel.Size = new System.Drawing.Size(49, 13);
+            this.lbKugelZiel.TabIndex = 5;
+            this.lbKugelZiel.Text = "Kugelziel";
+            this.lbKugelZiel.Click += new System.EventHandler(this.label_Click);
+            // 
+            // lbHaus
+            // 
+            this.lbHaus.AutoSize = true;
+            this.lbHaus.Location = new System.Drawing.Point(38, 307);
+            this.lbHaus.Name = "lbHaus";
+            this.lbHaus.Size = new System.Drawing.Size(32, 13);
+            this.lbHaus.TabIndex = 6;
+            this.lbHaus.Text = "Haus";
+            this.lbHaus.Click += new System.EventHandler(this.label_Click);
+            // 
+            // lbBarrier
+            // 
+            this.lbBarrier.AutoSize = true;
+            this.lbBarrier.Location = new System.Drawing.Point(38, 285);
+            this.lbBarrier.Name = "lbBarrier";
+            this.lbBarrier.Size = new System.Drawing.Size(43, 13);
+            this.lbBarrier.TabIndex = 7;
+            this.lbBarrier.Text = "Barriere";
+            this.lbBarrier.Click += new System.EventHandler(this.label_Click);
+            // 
+            // cBoxFarbe
+            // 
+            this.cBoxFarbe.FormattingEnabled = true;
+            this.cBoxFarbe.Items.AddRange(new object[] {
+            "blau",
+            "rot",
+            "grün",
+            "gelb"});
+            this.cBoxFarbe.Location = new System.Drawing.Point(630, 109);
+            this.cBoxFarbe.Name = "cBoxFarbe";
+            this.cBoxFarbe.Size = new System.Drawing.Size(121, 21);
+            this.cBoxFarbe.TabIndex = 8;
+            this.cBoxFarbe.Visible = false;
+            this.cBoxFarbe.SelectedIndexChanged += new System.EventHandler(this.cBoxFarbe_SelectedIndexChanged);
+            // 
+            // lbTeleporter
+            // 
+            this.lbTeleporter.AutoSize = true;
+            this.lbTeleporter.Location = new System.Drawing.Point(38, 263);
+            this.lbTeleporter.Name = "lbTeleporter";
+            this.lbTeleporter.Size = new System.Drawing.Size(55, 13);
+            this.lbTeleporter.TabIndex = 11;
+            this.lbTeleporter.Text = "Teleporter";
+            this.lbTeleporter.Click += new System.EventHandler(this.label_Click);
+            // 
+            // numIndex
+            // 
+            this.numIndex.Location = new System.Drawing.Point(630, 159);
+            this.numIndex.Name = "numIndex";
+            this.numIndex.Size = new System.Drawing.Size(78, 20);
+            this.numIndex.TabIndex = 12;
+            this.numIndex.Visible = false;
+            this.numIndex.ValueChanged += new System.EventHandler(this.numIndex_ValueChanged);
+            // 
+            // cBoxIsKnopfMauer
+            // 
+            this.cBoxIsKnopfMauer.AutoSize = true;
+            this.cBoxIsKnopfMauer.Location = new System.Drawing.Point(630, 136);
+            this.cBoxIsKnopfMauer.Name = "cBoxIsKnopfMauer";
+            this.cBoxIsKnopfMauer.Size = new System.Drawing.Size(54, 17);
+            this.cBoxIsKnopfMauer.TabIndex = 13;
+            this.cBoxIsKnopfMauer.Text = "Knopf";
+            this.cBoxIsKnopfMauer.UseVisualStyleBackColor = true;
+            this.cBoxIsKnopfMauer.Visible = false;
+            this.cBoxIsKnopfMauer.CheckedChanged += new System.EventHandler(this.cBoxIsKnopfMauer_CheckedChanged);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(630, 195);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 14;
+            this.btnDelete.Text = "Löschen";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnSpeichern
+            // 
+            this.btnSpeichern.Location = new System.Drawing.Point(693, 402);
+            this.btnSpeichern.Name = "btnSpeichern";
+            this.btnSpeichern.Size = new System.Drawing.Size(75, 23);
+            this.btnSpeichern.TabIndex = 15;
+            this.btnSpeichern.Text = "Speichern";
+            this.btnSpeichern.UseVisualStyleBackColor = true;
+            this.btnSpeichern.Click += new System.EventHandler(this.btnSpeichern_Click);
+            // 
+            // btnClearen
+            // 
+            this.btnClearen.Location = new System.Drawing.Point(13, 4);
+            this.btnClearen.Name = "btnClearen";
+            this.btnClearen.Size = new System.Drawing.Size(75, 23);
+            this.btnClearen.TabIndex = 16;
+            this.btnClearen.Text = "Clearen";
+            this.btnClearen.UseVisualStyleBackColor = true;
+            this.btnClearen.Click += new System.EventHandler(this.btnClearen_Click);
             // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnClearen);
+            this.Controls.Add(this.btnSpeichern);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.cBoxIsKnopfMauer);
+            this.Controls.Add(this.numIndex);
+            this.Controls.Add(this.lbTeleporter);
+            this.Controls.Add(this.cBoxFarbe);
+            this.Controls.Add(this.lbBarrier);
+            this.Controls.Add(this.lbHaus);
+            this.Controls.Add(this.lbKugelZiel);
+            this.Controls.Add(this.lbKugel);
+            this.Controls.Add(this.lbKnopf);
+            this.Controls.Add(this.lbKasten);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbMauer);
-            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LevelEditor";
             this.Text = "LevelEditor";
+            ((System.ComponentModel.ISupportInitialize)(this.numIndex)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,6 +233,19 @@
         #endregion
 
         private System.Windows.Forms.Label lbMauer;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbKasten;
+        private System.Windows.Forms.Label lbKnopf;
+        private System.Windows.Forms.Label lbKugel;
+        private System.Windows.Forms.Label lbKugelZiel;
+        private System.Windows.Forms.Label lbHaus;
+        private System.Windows.Forms.Label lbBarrier;
+        private System.Windows.Forms.ComboBox cBoxFarbe;
+        private System.Windows.Forms.Label lbTeleporter;
+        private System.Windows.Forms.NumericUpDown numIndex;
+        private System.Windows.Forms.CheckBox cBoxIsKnopfMauer;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSpeichern;
+        private System.Windows.Forms.Button btnClearen;
     }
 }
