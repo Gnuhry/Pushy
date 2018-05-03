@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,17 @@ namespace Pushy
 {
     public partial class Form1 : Form
     {
-        Control Player;
-        static int Hoch, Seite;
-        bool IsBarrier;
+        Speicher speicher;
+        string tag;
+       // Control Player;
+        //static int Hoch, Seite;
+        //bool IsBarrier;
         public Form1()
         {
+            speicher = new Speicher().laden(Directory.GetCurrentDirectory()+@"\Datenbank.txt");
             InitializeComponent();
-            KeyDown += Form1_KeyDown;
+            Temp_FormClosed(null, null);
+            /*KeyDown += Form1_KeyDown;
             for(int f = 0; f < Controls.Count; f++)
             {
                 if (Controls[f].Tag + "" == "Player")
@@ -28,10 +33,10 @@ namespace Pushy
             }
             Hoch = Player.Height;
             Seite = Player.Width;
-            IsBarrier = false;
+            IsBarrier = false;*/
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+       /* private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             Point temp = Player.Location;
             if (e.KeyData == Keys.Down) temp.Offset(0, Player.Height);
@@ -50,11 +55,6 @@ namespace Pushy
             if ((sender as Control).Enabled) (sender as Control).BackColor = Color.Red;
             else (sender as Control).BackColor = Color.Blue;
         }
-        private void pictureBox8_Click(object sender, EventArgs e)
-        {
-            new Level1().Show();
-        }
-
 
         private void Win()
         {
@@ -293,34 +293,61 @@ namespace Pushy
             }
             IsBarrier = false;
         }
+        */
 
-        private void pictureBox8_Click_1(object sender, EventArgs e)
+        private void btnLevelEditor_Click(object sender, EventArgs e)
         {
-            new LevelEditor().Show();
+            tag = comBox.SelectedItem+"";
+           LevelEditor temp= new LevelEditor(speicher,comBox.SelectedIndex, comBox.SelectedItem+"" == "Neues Level");
+            temp.FormClosed += Temp_FormClosed;
+            temp.Show();
         }
 
-        private void KugelVersenkt(string Farbe, Control Kugel)
+        private void Temp_FormClosed(object sender, FormClosedEventArgs e)
         {
-            for(int f = 0; f < Controls.Count; f++)
+            comBox.Items.Clear();
+            for (int f = 0; f < speicher.Length(); f++)
             {
-                if (("" + Controls[f].Tag) == ("KugelZiel." + Farbe))
-                {
-                    if (Kugel.Location.X < Controls[f].Location.X + Controls[f].Width &
-                  Controls[f].Location.X < Kugel.Location.X + Kugel.Size.Width &&
-                  Kugel.Location.Y < Controls[f].Location.Y + Controls[f].Height &&
-                  Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height) { Kugel.Dispose(); return; }
-                }
-                else if (("" + Controls[f].Tag).Split('.')[0] == "Farbklecks")
-                    if (Kugel.Location.X < Controls[f].Location.X + Controls[f].Width &
-                  Controls[f].Location.X < Kugel.Location.X + Kugel.Size.Width &&
-                  Kugel.Location.Y < Controls[f].Location.Y + Controls[f].Height &&
-                  Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height)
-                    {
-                        Kugel.Tag = "Kugel." + ("" + Controls[f].Tag).Split('.')[1];
-                        Controls[f].Visible = false;
-                        return;
-                    }
+                comBox.Items.Add("Level " + (f + 1)+" - "+speicher.GetName(f));
             }
+            comBox.Items.Add("Neues Level");
+            if (sender == null) return;
+            switch(tag.Split(' ')[1])
+            {
+                case "Level": comBox.SelectedIndex = comBox.Items.Count - 1; break;
+                default: comBox.SelectedIndex = Convert.ToInt32(tag.Split(' ')[1]) - 1; break;
+            }
+            
         }
+
+        private void btnStarten_Click(object sender, EventArgs e)
+        {
+            if (comBox.SelectedItem + "" == "Neues Level") return;
+            new Level(speicher,comBox.SelectedIndex).Show();
+        }
+        /*
+private void KugelVersenkt(string Farbe, Control Kugel)
+{
+  for(int f = 0; f < Controls.Count; f++)
+  {
+      if (("" + Controls[f].Tag) == ("KugelZiel." + Farbe))
+      {
+          if (Kugel.Location.X < Controls[f].Location.X + Controls[f].Width &
+        Controls[f].Location.X < Kugel.Location.X + Kugel.Size.Width &&
+        Kugel.Location.Y < Controls[f].Location.Y + Controls[f].Height &&
+        Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height) { Kugel.Dispose(); return; }
+      }
+      else if (("" + Controls[f].Tag).Split('.')[0] == "Farbklecks")
+          if (Kugel.Location.X < Controls[f].Location.X + Controls[f].Width &
+        Controls[f].Location.X < Kugel.Location.X + Kugel.Size.Width &&
+        Kugel.Location.Y < Controls[f].Location.Y + Controls[f].Height &&
+        Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height)
+          {
+              Kugel.Tag = "Kugel." + ("" + Controls[f].Tag).Split('.')[1];
+              Controls[f].Visible = false;
+              return;
+          }
+  }
+}*/
     }
 }

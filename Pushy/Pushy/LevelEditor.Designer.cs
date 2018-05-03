@@ -43,7 +43,13 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSpeichern = new System.Windows.Forms.Button();
             this.btnClearen = new System.Windows.Forms.Button();
+            this.lbPlayer = new System.Windows.Forms.Label();
+            this.txBName = new System.Windows.Forms.TextBox();
+            this.numHohe = new System.Windows.Forms.NumericUpDown();
+            this.numBreite = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numIndex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHohe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBreite)).BeginInit();
             this.SuspendLayout();
             // 
             // lbMauer
@@ -154,6 +160,11 @@
             // numIndex
             // 
             this.numIndex.Location = new System.Drawing.Point(630, 159);
+            this.numIndex.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.numIndex.Name = "numIndex";
             this.numIndex.Size = new System.Drawing.Size(78, 20);
             this.numIndex.TabIndex = 12;
@@ -184,7 +195,7 @@
             // 
             // btnSpeichern
             // 
-            this.btnSpeichern.Location = new System.Drawing.Point(693, 402);
+            this.btnSpeichern.Location = new System.Drawing.Point(659, 402);
             this.btnSpeichern.Name = "btnSpeichern";
             this.btnSpeichern.Size = new System.Drawing.Size(75, 23);
             this.btnSpeichern.TabIndex = 15;
@@ -202,11 +213,78 @@
             this.btnClearen.UseVisualStyleBackColor = true;
             this.btnClearen.Click += new System.EventHandler(this.btnClearen_Click);
             // 
+            // lbPlayer
+            // 
+            this.lbPlayer.AutoSize = true;
+            this.lbPlayer.Location = new System.Drawing.Point(38, 250);
+            this.lbPlayer.Name = "lbPlayer";
+            this.lbPlayer.Size = new System.Drawing.Size(36, 13);
+            this.lbPlayer.TabIndex = 17;
+            this.lbPlayer.Text = "Player";
+            this.lbPlayer.Click += new System.EventHandler(this.label_Click);
+            // 
+            // txBName
+            // 
+            this.txBName.Location = new System.Drawing.Point(630, 375);
+            this.txBName.Name = "txBName";
+            this.txBName.Size = new System.Drawing.Size(100, 20);
+            this.txBName.TabIndex = 20;
+            // 
+            // numHohe
+            // 
+            this.numHohe.Location = new System.Drawing.Point(672, 283);
+            this.numHohe.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.numHohe.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numHohe.Name = "numHohe";
+            this.numHohe.Size = new System.Drawing.Size(36, 20);
+            this.numHohe.TabIndex = 21;
+            this.numHohe.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numHohe.ValueChanged += new System.EventHandler(this.numHohe_ValueChanged);
+            // 
+            // numBreite
+            // 
+            this.numBreite.Location = new System.Drawing.Point(633, 283);
+            this.numBreite.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.numBreite.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numBreite.Name = "numBreite";
+            this.numBreite.Size = new System.Drawing.Size(36, 20);
+            this.numBreite.TabIndex = 22;
+            this.numBreite.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numBreite.ValueChanged += new System.EventHandler(this.numBreite_ValueChanged);
+            // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.numBreite);
+            this.Controls.Add(this.numHohe);
+            this.Controls.Add(this.txBName);
+            this.Controls.Add(this.lbPlayer);
             this.Controls.Add(this.btnClearen);
             this.Controls.Add(this.btnSpeichern);
             this.Controls.Add(this.btnDelete);
@@ -222,9 +300,12 @@
             this.Controls.Add(this.lbKasten);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbMauer);
+            this.MinimumSize = new System.Drawing.Size(789, 489);
             this.Name = "LevelEditor";
             this.Text = "LevelEditor";
             ((System.ComponentModel.ISupportInitialize)(this.numIndex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHohe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBreite)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +328,9 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSpeichern;
         private System.Windows.Forms.Button btnClearen;
+        private System.Windows.Forms.Label lbPlayer;
+        private System.Windows.Forms.TextBox txBName;
+        private System.Windows.Forms.NumericUpDown numHohe;
+        private System.Windows.Forms.NumericUpDown numBreite;
     }
 }

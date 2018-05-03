@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,15 +15,36 @@ namespace Pushy
     {
         private Control activeControl,Sender;
         private Point previousPosition;
-        static int Breite = 20, Hohe = 20;
+        private int Breite, Hohe;
         private Speicher speicher;
+        private bool beatbeiten;
+        private int Level;
 
-        public LevelEditor()
+        public LevelEditor(Speicher speicher,int Level, bool Bearbeiten)
         {
+            this.Level = Level;
+            beatbeiten = Bearbeiten;
             InitializeComponent();
-            speicher = new Speicher().laden(@"\Datenbank.txt");
+            this.speicher = speicher;
+            Breite = Hohe = 20;
+            if (Bearbeiten) return;
+            numHohe.Value=Breite = speicher.GetBreite(Level);
+            numBreite.Value=Hohe = speicher.GetHohe(Level);
+            Control[] Controls = speicher.GetControls(Level, new Size( panel1.Width / Breite, panel1.Height / Hohe));
+            for (int f = 0; f < Controls.Length; f++)
+            {
+                Console.WriteLine(Controls[f].Tag);
+                Controls[f].MouseDown += Temp_MouseDown;
+                Controls[f].MouseMove += Temp_MouseMove;
+                Controls[f].MouseUp += Temp_MouseUp;
+                panel1.Controls.Add(Controls[f]);
+            }
+            txBName.Text = speicher.GetName(Level);
+            if (txBName.Text == "No Name") txBName.Text = null;
+           
         }
 
+       
 
         private void Temp_MouseUp(object sender, MouseEventArgs e)
         {
@@ -100,12 +122,12 @@ namespace Pushy
             PictureBox temp = new PictureBox
             {
                 Tag = "" + (sender as Control).Text,
-                Size = new Size(panel1.Width / 20, panel1.Height / 20)
+                Size = new Size(panel1.Width / Breite, panel1.Height / Hohe)
             };
             temp.MouseDown += Temp_MouseDown;
             temp.MouseMove += Temp_MouseMove;
             temp.MouseUp += Temp_MouseUp;
-            switch (""+temp.Tag)
+            switch (""+temp.Tag) //Garfiken hinzufügen
             {
                 case "Mauer": temp.BackColor = Color.Red; break;
                 case "Kasten": temp.BackColor = Color.Gray; break;
@@ -115,6 +137,7 @@ namespace Pushy
                 case "Haus":  break;
                 case "Knopf": temp.Tag += ".1"; break;
                 case "Teleporter": temp.Tag = "Barrier"; break;
+                case "Player": break;
             }
             panel1.Controls.Add(temp);
             Console.WriteLine(temp.Tag);
@@ -167,7 +190,7 @@ namespace Pushy
                 if((panel1.Controls[f].Tag + "").Split('.')[0] != "Mauer")
                 {
                     for(int g=0;g<panel1.Controls.Count;g++)
-                        if (panel1.Controls[f].Location == panel1.Controls[g].Location)
+                        if (panel1.Controls[f].Location == panel1.Controls[g].Location&&panel1.Controls[f]!=panel1.Controls[g])
                         {
                             Fehler++;
                             panel1.Controls[f].BackColor = panel1.Controls[g].BackColor = Color.Orange;
@@ -177,14 +200,40 @@ namespace Pushy
             if (PlayerC != 1) { MessageBox.Show("Nur ein Spieler!"); Fehler++; }
             if (HausC != 1) { MessageBox.Show("Nur ein Haus!"); Fehler++; }
             if (Fehler > 0) return;
-            speicher.Add(panel1.Controls);
-            speicher.speichern(@"\Datenbank.txt");
+            if (!beatbeiten)
+                speicher.Add(panel1.Controls, panel1.Size, Hohe, Breite, txBName.Text,Level);
+            else
+                speicher.Add(panel1.Controls,panel1.Size,Hohe,Breite,txBName.Text);
+            speicher.speichern(Directory.GetCurrentDirectory()+@"\Datenbank.txt");
             MessageBox.Show("Erfolgreich gespeichert");
         }
 
         private void btnClearen_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
+        }
+
+        private void numBreite_ValueChanged(object sender, EventArgs e)
+        {
+            Aktualisieren(new Size((int)numBreite.Value,Hohe));
+        }
+
+        private void Aktualisieren(Size neu)
+        {
+            for(int f = 0; f < panel1.Controls.Count; f++)
+            {
+                panel1.Controls[f].Location = new Point(panel1.Controls[f].Location.X / (panel1.Height / Hohe) * (panel1.Height / neu.Height), panel1.Controls[f].Location.Y / (panel1.Width / Breite) * (panel1.Width / neu.Width));
+                panel1.Controls[f].Size = new Size( panel1.Height / neu.Height, panel1.Width / neu.Width);
+                Console.WriteLine(panel1.Controls[f].Tag + "," + panel1.Controls[f].Location.ToString()+","+panel1.Controls[f].Size.ToString());
+                if (panel1.Controls[f].Location.X + panel1.Controls[f].Size.Height > panel1.Height || panel1.Controls[f].Location.Y + panel1.Controls[f].Size.Width > panel1.Width)
+                    panel1.Controls[f].Location = new Point(0, 0);
+            }
+            Hohe = neu.Height;Breite = neu.Width;
+        }
+
+        private void numHohe_ValueChanged(object sender, EventArgs e)
+        {
+            Aktualisieren(new Size(Breite, (int)numHohe.Value));
         }
 
         private void cBoxFarbe_SelectedIndexChanged(object sender, EventArgs e)
