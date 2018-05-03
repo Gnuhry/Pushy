@@ -285,6 +285,7 @@ namespace Pushy
                 }
             }
         }
+
         private void KugelVersenkt(string Farbe, Control Kugel)
         {
             for (int f = 0; f < panel1.Controls.Count; f++)
