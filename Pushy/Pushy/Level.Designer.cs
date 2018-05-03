@@ -34,7 +34,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pcBReset = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,17 +80,28 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(496, 112);
+            this.pictureBox1.Location = new System.Drawing.Point(482, 29);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // pcBReset
+            // 
+            this.pcBReset.BackColor = System.Drawing.Color.Silver;
+            this.pcBReset.Location = new System.Drawing.Point(513, 104);
+            this.pcBReset.Name = "pcBReset";
+            this.pcBReset.Size = new System.Drawing.Size(100, 50);
+            this.pcBReset.TabIndex = 6;
+            this.pcBReset.TabStop = false;
+            this.pcBReset.Click += new System.EventHandler(this.pcBReset_Click);
             // 
             // Level
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 459);
+            this.Controls.Add(this.pcBReset);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -99,6 +112,7 @@
             this.Name = "Level";
             this.Text = "Level";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -111,5 +125,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pcBReset;
     }
 }

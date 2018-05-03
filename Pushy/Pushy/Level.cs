@@ -15,9 +15,13 @@ namespace Pushy
         Control Player;
         static int Hoch, Seite;
         bool IsBarrier;
+        Speicher speicher;
+        int level;
         public Level(Speicher speicher,int Level)
         {
             InitializeComponent();
+            this.speicher = speicher;
+            this.level = Level;
             Control[] Controls = speicher.GetControls(Level, new Size( panel1.Width / speicher.GetBreite(Level), panel1.Height / speicher.GetHohe(Level)));
             for (int f = 0; f < Controls.Length; f++)
             {
@@ -284,6 +288,18 @@ namespace Pushy
                     }
                 }
             }
+        }
+
+        private void pcBReset_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            InitializeComponent();
+            Control[] Controls = speicher.GetControls(level, new Size(panel1.Width / speicher.GetBreite(level), panel1.Height / speicher.GetHohe(level)));
+            for (int f = 0; f < Controls.Length; f++)
+            {
+                panel1.Controls.Add(Controls[f]);
+            }
+            IsBarrier = false;
         }
 
         private void KugelVersenkt(string Farbe, Control Kugel)
