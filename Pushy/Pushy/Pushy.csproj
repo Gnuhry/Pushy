@@ -134,5 +134,41 @@
   <ItemGroup>
     <None Include="Resources\ic_work_black_24dp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyKasten.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pushy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MauerwerkPuschy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyFarbzielBlau.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyBallRot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyBallGelb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyBallBlau.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyKugelGrün.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyFarbzielGelb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyFarbzielGrün.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PushyFarbzielRot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PuschyBoden.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
