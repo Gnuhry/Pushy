@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Pushy
@@ -15,13 +11,9 @@ namespace Pushy
     public class Speicher
     {
         List<string[]> controlCollections;
-        List<string> Namen;
-        List<Point> Hohe_Breite;
         public Speicher()
         {
             controlCollections = new List<string[]>();
-            Namen = new List<string>();
-            Hohe_Breite = new List<Point>();
         }
         public void Add(Control.ControlCollection Controls,Size PanelSize,int Hohe, int Breite, string Name)
         {
@@ -29,7 +21,7 @@ namespace Pushy
             string[] temp = new string[Controls.Count+1];
             temp[0] = Name + "," + Hohe + ";" + Breite;
             for(int f = 1; f < temp.Length; f++)
-                temp[f] = Controls[f - 1].Tag + "," + Controls[f - 1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f - 1].Location.Y / (PanelSize.Width / Breite);
+                temp[f] = Controls[f - 1].Tag + "," + Controls[f - 1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f - 1].Location.Y / (PanelSize.Width / Breite)+"#0";
             controlCollections.Add(temp);
         }
         public void Add(Control.ControlCollection Controls, Size PanelSize, int Hohe, int Breite, string Name,int index)
@@ -37,7 +29,7 @@ namespace Pushy
             string[] temp = new string[Controls.Count+1];
             temp[0] = Name + "," + Hohe + ";" + Breite;
             for (int f = 1; f < temp.Length; f++)
-                temp[f] = Controls[f-1].Tag + "," + Controls[f-1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f-1].Location.Y / (PanelSize.Width / Breite);
+                temp[f] = Controls[f-1].Tag + "," + Controls[f-1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f-1].Location.Y / (PanelSize.Width / Breite)+"#"+temp[f].Split('#')[1];
             controlCollections[index]=(temp);
         }
         public void speichern(string path)
@@ -104,6 +96,13 @@ namespace Pushy
         public string GetName(int index) =>controlCollections[index][0].Split(',')[0];
         public int GetHohe(int index) => Convert.ToInt32(controlCollections[index][0].Split(',')[1].Split(';')[0]);
         public int GetBreite(int index) => Convert.ToInt32(controlCollections[index][0].Split(',')[1].Split(';')[1]);
+        public bool SetHighscore(int index, int time)
+        {
+            if (time >= Convert.ToInt32(controlCollections[index][0].Split('#')[1])) return false;
+            controlCollections[index][0] = controlCollections[index][0].Split('#')[0] + "#" + time;
+            speichern(Directory.GetCurrentDirectory() + @"\Datenbank.txt");
+            return true;
+        }
 
 
     }

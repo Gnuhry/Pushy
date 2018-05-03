@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Pushy
@@ -17,11 +11,13 @@ namespace Pushy
         bool IsBarrier;
         Speicher speicher;
         int level;
+        Timer timer;
         public Level(Speicher speicher,int Level)
         {
+            timer = new Timer();
             InitializeComponent();
             this.speicher = speicher;
-            this.level = Level;
+            level = Level;
             Control[] Controls = speicher.GetControls(Level, new Size( panel1.Width / speicher.GetBreite(Level), panel1.Height / speicher.GetHohe(Level)));
             for (int f = 0; f < Controls.Length; f++)
             {
@@ -38,6 +34,14 @@ namespace Pushy
             Hoch = Player.Height;
             Seite = Player.Width;
             IsBarrier = false;
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            label1.Text = Convert.ToInt32(label1.Text) + 1 + "";
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -68,6 +72,9 @@ namespace Pushy
                 if (panel1.Controls[f].Enabled && panel1.Controls[f].Visible)
                     if (("" + panel1.Controls[f].Tag).Split('.')[0] == "Kugel") return;
             }
+            timer.Stop();
+            if (speicher.SetHighscore(level, Convert.ToInt32(label1.Text)))
+                MessageBox.Show("New Highscore");
             MessageBox.Show("Gewonnen");
         }
         private bool Uberprufung(Point PlayerLocation, bool IsPlayer, Control Player)
@@ -293,13 +300,22 @@ namespace Pushy
         private void pcBReset_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            InitializeComponent();
             Control[] Controls = speicher.GetControls(level, new Size(panel1.Width / speicher.GetBreite(level), panel1.Height / speicher.GetHohe(level)));
             for (int f = 0; f < Controls.Length; f++)
             {
                 panel1.Controls.Add(Controls[f]);
             }
+            for (int f = 0; f < panel1.Controls.Count; f++)
+            {
+                if (panel1.Controls[f].Tag + "" == "Player")
+                    Player = panel1.Controls[f];
+                if ((panel1.Controls[f].Tag + "").Split('.')[0] == "KnopfMauer")
+                    panel1.Controls[f].EnabledChanged += KnopfMauer_EnabledChanged;
+            }
+            Hoch = Player.Height;
+            Seite = Player.Width;
             IsBarrier = false;
+            label1.Text = "0";
         }
 
         private void KugelVersenkt(string Farbe, Control Kugel)
