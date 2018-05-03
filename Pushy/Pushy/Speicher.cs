@@ -81,7 +81,8 @@ namespace Pushy
                 {
                     Tag = controlCollections[Levelindex][f+1].Split(',')[0],
                     Location = new Point(Convert.ToInt32(controlCollections[Levelindex][f+1].Split(',')[1].Split(';')[0]) * size.Height, Convert.ToInt32(controlCollections[Levelindex][f+1].Split(',')[1].Split(';')[1]) * size.Width),
-                    Size = size
+                    Size = size,
+                    SizeMode = PictureBoxSizeMode.Zoom
                 };
                 switch (controlCollections[Levelindex][f+1].Split(',')[0].Split('.')[0]) //Garfiken hinzufügen
                 {

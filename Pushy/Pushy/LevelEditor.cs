@@ -138,7 +138,8 @@ namespace Pushy
             PictureBox temp = new PictureBox
             {
                 Tag = "" + (sender as Control).Text,
-                Size = new Size(panel1.Width / Breite, panel1.Height / Hohe)
+                Size = new Size(panel1.Width / Breite, panel1.Height / Hohe),
+                SizeMode = PictureBoxSizeMode.Zoom
             };
             temp.MouseDown += Temp_MouseDown;
             temp.MouseMove += Temp_MouseMove;
@@ -252,6 +253,18 @@ namespace Pushy
             Aktualisieren(new Size(Breite, (int)numHohe.Value));
         }
 
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
 
         private void cBoxFarbe_SelectedIndexChanged(object sender, EventArgs e)
         {
