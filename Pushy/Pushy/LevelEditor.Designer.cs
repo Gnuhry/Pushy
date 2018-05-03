@@ -47,6 +47,7 @@
             this.txBName = new System.Windows.Forms.TextBox();
             this.numHohe = new System.Windows.Forms.NumericUpDown();
             this.numBreite = new System.Windows.Forms.NumericUpDown();
+            this.lbFarbklecks = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHohe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBreite)).BeginInit();
@@ -153,7 +154,7 @@
             // lbTeleporter
             // 
             this.lbTeleporter.AutoSize = true;
-            this.lbTeleporter.Location = new System.Drawing.Point(38, 263);
+            this.lbTeleporter.Location = new System.Drawing.Point(38, 250);
             this.lbTeleporter.Name = "lbTeleporter";
             this.lbTeleporter.Size = new System.Drawing.Size(55, 13);
             this.lbTeleporter.TabIndex = 11;
@@ -219,7 +220,7 @@
             // lbPlayer
             // 
             this.lbPlayer.AutoSize = true;
-            this.lbPlayer.Location = new System.Drawing.Point(38, 250);
+            this.lbPlayer.Location = new System.Drawing.Point(39, 227);
             this.lbPlayer.Name = "lbPlayer";
             this.lbPlayer.Size = new System.Drawing.Size(36, 13);
             this.lbPlayer.TabIndex = 17;
@@ -279,11 +280,22 @@
             0});
             this.numBreite.ValueChanged += new System.EventHandler(this.numBreite_ValueChanged);
             // 
+            // lbFarbklecks
+            // 
+            this.lbFarbklecks.AutoSize = true;
+            this.lbFarbklecks.Location = new System.Drawing.Point(42, 205);
+            this.lbFarbklecks.Name = "lbFarbklecks";
+            this.lbFarbklecks.Size = new System.Drawing.Size(59, 13);
+            this.lbFarbklecks.TabIndex = 23;
+            this.lbFarbklecks.Text = "Farbklecks";
+            this.lbFarbklecks.Click += new System.EventHandler(this.label_Click);
+            // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.lbFarbklecks);
             this.Controls.Add(this.numBreite);
             this.Controls.Add(this.numHohe);
             this.Controls.Add(this.txBName);
@@ -335,5 +347,6 @@
         private System.Windows.Forms.TextBox txBName;
         private System.Windows.Forms.NumericUpDown numHohe;
         private System.Windows.Forms.NumericUpDown numBreite;
+        private System.Windows.Forms.Label lbFarbklecks;
     }
 }

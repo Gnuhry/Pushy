@@ -95,6 +95,7 @@ namespace Pushy
                     case "Knopf": (erg[f] as PictureBox).Image = Properties.Resources.Knopf; break;
                     case "Teleporter": (erg[f] as PictureBox).Image = Properties.Resources.Teleporter; break;
                     case "Player": (erg[f] as PictureBox).Image = Properties.Resources.Player; erg[f].BackColor = Color.Green; break;
+                    case "Farbklecks": break;
                 }
             }
             return erg;

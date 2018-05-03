@@ -64,7 +64,9 @@ namespace Pushy
             Console.WriteLine(temp.ToString());
             (sender as Control).Location = temp;
             cBoxIsKnopfMauer.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
-            if (((sender as Control).Tag+"").Split('.')[0]=="Kugel"|| ((sender as Control).Tag + "").Split('.')[0] == "KugelZiel")
+            MessageBox.Show((((sender as Control).Tag + "").Split('.')[0] ) + "");
+
+            if (((sender as Control).Tag+"").Split('.')[0]=="Kugel"|| ((sender as Control).Tag + "").Split('.')[0] == "KugelZiel" || ((sender as Control).Tag + "").Split('.')[0] == "Farbklecks")
             {
                 cBoxFarbe.Visible = true;
                 switch(((sender as Control).Tag + "").Split('.')[1])
@@ -153,8 +155,9 @@ namespace Pushy
                 case "Bariere": temp.Image = Properties.Resources.Barier; temp.Tag = "Barrier"; break;
                 case "Haus": temp.Image = Properties.Resources.Haus; break;
                 case "Knopf": temp.Image = Properties.Resources.Knopf; temp.Tag += ".1"; break;
-                case "Teleporter": temp.Image = Properties.Resources.Teleporter; temp.Tag = "Barrier"; break;
+                case "Teleporter": temp.Image = Properties.Resources.Teleporter; temp.Tag += ".1"; break;
                 case "Player": temp.Image = Properties.Resources.Player; break;
+                case "Farbklecks": temp.Tag += ".rot"; break;
             }
             panel1.Controls.Add(temp);
             Console.WriteLine(temp.Tag);
