@@ -85,15 +85,15 @@ namespace Pushy
                 };
                 switch (controlCollections[Levelindex][f+1].Split(',')[0].Split('.')[0]) //Garfiken hinzufügen
                 {
-                    case "Mauer": erg[f].BackColor = Color.Red; break;
-                    case "Kasten": erg[f].BackColor = Color.Gray; break;
-                    case "Kugel":  break;
-                    case "Kugelziel":  break;
-                    case "Bariere":  break;
-                    case "Haus": erg[f].BackColor = Color.Black; break;
-                    case "Knopf":  break;
-                    case "Teleporter":  break;
-                    case "Player": erg[f].BackColor = Color.Green; break;
+                    case "Mauer": (erg[f] as PictureBox).Image = Properties.Resources.Mauer; erg[f].BackColor = Color.Red; break;
+                    case "Kasten": (erg[f] as PictureBox).Image = Properties.Resources.Kasten; erg[f].BackColor = Color.Gray; break;
+                    case "Kugel": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_rot; break;
+                    case "Kugelziel": (erg[f] as PictureBox).Image = Properties.Resources.Kugelziel_blau; break;
+                    case "Bariere": (erg[f] as PictureBox).Image = Properties.Resources.Barier; break;
+                    case "Haus": (erg[f] as PictureBox).Image = Properties.Resources.Haus; erg[f].BackColor = Color.Black; break;
+                    case "Knopf": (erg[f] as PictureBox).Image = Properties.Resources.Knopf; break;
+                    case "Teleporter": (erg[f] as PictureBox).Image = Properties.Resources.Teleporter; break;
+                    case "Player": (erg[f] as PictureBox).Image = Properties.Resources.Player; erg[f].BackColor = Color.Green; break;
                 }
             }
             return erg;

@@ -92,7 +92,23 @@ namespace Pushy
                 cBoxIsKnopfMauer.Visible = true;
                 cBoxIsKnopfMauer.Checked = false;
             }
+            //(sender as Control).KeyDown += LevelEditor_KeyDown;
 
+        }
+
+        private void LevelEditor_KeyDown(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show("yea");
+            Point temp = (sender as Control).Location;
+            switch (e.KeyData)
+            {
+                case Keys.D: temp.Offset(0, (sender as Control).Size.Width); break;
+                case Keys.A: temp.Offset(0, -(sender as Control).Size.Width); break;
+                case Keys.W: temp.Offset(-(sender as Control).Size.Height,0); break;
+                case Keys.S: temp.Offset((sender as Control).Size.Height,0); break;
+            }
+            if (Randuerberprufung(temp, sender))
+                (sender as Control).Location = temp;
         }
 
         private void Temp_MouseMove(object sender, MouseEventArgs e)
@@ -129,15 +145,15 @@ namespace Pushy
             temp.MouseUp += Temp_MouseUp;
             switch (""+temp.Tag) //Garfiken hinzufügen
             {
-                case "Mauer": temp.BackColor = Color.Red; break;
-                case "Kasten": temp.BackColor = Color.Gray; break;
-                case "Kugel": temp.Tag += ".rot"; break;
-                case "Kugelziel": temp.Tag = "KugelZiel.rot"; break;
-                case "Bariere": temp.Tag = "Barrier"; break;
-                case "Haus":  break;
-                case "Knopf": temp.Tag += ".1"; break;
-                case "Teleporter": temp.Tag = "Barrier"; break;
-                case "Player": break;
+                case "Mauer":  temp.Image = Properties.Resources.Mauer; temp.BackColor = Color.Red; break;
+                case "Kasten": temp.Image = Properties.Resources.Kasten; temp.BackColor = Color.Gray; break;
+                case "Kugel": temp.Image = Properties.Resources.Kugel_rot; temp.Tag += ".rot"; break;
+                case "Kugelziel": temp.Image = Properties.Resources.Kugelziel_blau; temp.Tag = "KugelZiel.rot"; break;
+                case "Bariere": temp.Image = Properties.Resources.Barier; temp.Tag = "Barrier"; break;
+                case "Haus": temp.Image = Properties.Resources.Haus; break;
+                case "Knopf": temp.Image = Properties.Resources.Knopf; temp.Tag += ".1"; break;
+                case "Teleporter": temp.Image = Properties.Resources.Teleporter; temp.Tag = "Barrier"; break;
+                case "Player": temp.Image = Properties.Resources.Player; break;
             }
             panel1.Controls.Add(temp);
             Console.WriteLine(temp.Tag);
@@ -235,6 +251,7 @@ namespace Pushy
         {
             Aktualisieren(new Size(Breite, (int)numHohe.Value));
         }
+
 
         private void cBoxFarbe_SelectedIndexChanged(object sender, EventArgs e)
         {
