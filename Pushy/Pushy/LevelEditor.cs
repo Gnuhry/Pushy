@@ -58,7 +58,7 @@ namespace Pushy
             Console.WriteLine(temp.ToString());
             (sender as Control).Location = temp;
             cBoxIsKnopfMauer.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
-            MessageBox.Show((((sender as Control).Tag + "").Split('.')[0] ) + "");
+           // MessageBox.Show((((sender as Control).Tag + "").Split('.')[0] ) + "");
 
             if (((sender as Control).Tag+"").Split('.')[0]=="Kugel"|| ((sender as Control).Tag + "").Split('.')[0] == "KugelZiel" || ((sender as Control).Tag + "").Split('.')[0] == "Farbklecks")
             {
@@ -135,17 +135,18 @@ namespace Pushy
             {
                 Tag = "" + (sender as Control).Text,
                 Size = new Size(panel1.Width / Breite, panel1.Height / Hohe),
-                SizeMode = PictureBoxSizeMode.Zoom
+                SizeMode = PictureBoxSizeMode.Zoom,
+                BackgroundImage = Properties.Resources.Boden
             };
             temp.MouseDown += Temp_MouseDown;
             temp.MouseMove += Temp_MouseMove;
             temp.MouseUp += Temp_MouseUp;
             switch (""+temp.Tag) //Garfiken hinzufügen
             {
-                case "Mauer":  temp.Image = Properties.Resources.Mauer; temp.BackColor = Color.Red; break;
-                case "Kasten": temp.Image = Properties.Resources.Kasten; temp.BackColor = Color.Gray; break;
+                case "Mauer":  temp.Image = Properties.Resources.Mauer;break;
+                case "Kasten": temp.Image = Properties.Resources.Kasten;  break;
                 case "Kugel": temp.Image = Properties.Resources.Kugel_rot; temp.Tag += ".rot"; break;
-                case "Kugelziel": temp.Image = Properties.Resources.Kugelziel_blau; temp.Tag = "KugelZiel.rot"; break;
+                case "Kugelziel": temp.Image = Properties.Resources.Kugelziel_rot; temp.Tag = "KugelZiel.rot"; break;
                 case "Bariere": temp.Image = Properties.Resources.Barier; temp.Tag = "Barrier"; break;
                 case "Haus": temp.Image = Properties.Resources.Haus; break;
                 case "Knopf": temp.Image = Properties.Resources.Knopf; temp.Tag += ".1"; break;
@@ -265,13 +266,30 @@ namespace Pushy
 
         private void cBoxFarbe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cBoxFarbe.SelectedIndex)
-            {
-                case 0: Sender.Tag = (Sender.Tag + "").Split('.')[0] + ".blau"; break;
-                case 1: Sender.Tag = (Sender.Tag + "").Split('.')[0] + ".rot"; break;
-                case 2: Sender.Tag = (Sender.Tag + "").Split('.')[0] + ".gruen"; break;
-                case 3: Sender.Tag = (Sender.Tag + "").Split('.')[0] + ".gelb"; break;
-            }
+            if ((Sender.Tag + "").Split('.')[0] == "Kugel")
+                switch (cBoxFarbe.SelectedIndex)
+                {
+                    case 0: Sender.Tag="Kugel.blau"; (Sender as PictureBox).Image = Properties.Resources.Kugel_blau; break;
+                    case 1: Sender.Tag = "Kugel.rot"; (Sender as PictureBox).Image = Properties.Resources.Kugel_rot; break;
+                    case 2: Sender.Tag = "Kugel.gruen"; (Sender as PictureBox).Image = Properties.Resources.Kugel_gruen; break;
+                    case 3: Sender.Tag = "Kugel.gelb"; (Sender as PictureBox).Image = Properties.Resources.Kugel_gelb; break;
+                }
+            else if ((Sender.Tag + "").Split('.')[0] == "KugelZiel")
+                switch (cBoxFarbe.SelectedIndex)
+                {
+                    case 0: Sender.Tag = "KugelZiel.blau"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_blau; break;
+                    case 1: Sender.Tag = "KugelZiel.rot"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_rot; break;
+                    case 2: Sender.Tag = "KugelZiel.gruen"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_gruen; break;
+                    case 3: Sender.Tag = "KugelZiel.gelb"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_gelb; break;
+                }
+            else if ((Sender.Tag + "").Split('.')[0] == "Farbklecks")
+                switch (cBoxFarbe.SelectedIndex)
+                {
+                    case 0: Sender.Tag = "Farbklecks.blau"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_blau; break;
+                    case 1: Sender.Tag = "Farbklecks.rot"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_rot; break;
+                    case 2: Sender.Tag = "Farbklecks.gruen"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_gruen; break;
+                    case 3: Sender.Tag = "Farbklecks.gelb"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_gelb; break;
+                }
         }
 
         private void Temp_MouseDown(object sender, MouseEventArgs e)

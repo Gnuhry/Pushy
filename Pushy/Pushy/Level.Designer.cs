@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Level));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -42,6 +43,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackgroundImage = global::Pushy.Properties.Resources.Boden;
             this.panel1.Location = new System.Drawing.Point(32, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 400);
@@ -49,7 +51,8 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.Location = new System.Drawing.Point(12, 29);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(20, 400);
@@ -57,7 +60,8 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.DimGray;
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.Location = new System.Drawing.Point(432, 29);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(20, 400);
@@ -65,7 +69,8 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.DimGray;
+            this.panel4.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
             this.panel4.Location = new System.Drawing.Point(12, 429);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(440, 20);
@@ -73,7 +78,8 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.DimGray;
+            this.panel5.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
             this.panel5.Location = new System.Drawing.Point(12, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(440, 20);
@@ -122,6 +128,7 @@
             this.MinimumSize = new System.Drawing.Size(658, 498);
             this.Name = "Level";
             this.Text = "Level";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).EndInit();
             this.ResumeLayout(false);

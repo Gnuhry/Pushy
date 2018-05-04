@@ -19,17 +19,17 @@ namespace Pushy
         {
             if (Name.Trim() == "" || Name.Trim() == null) Name = "No Name";
             string[] temp = new string[Controls.Count+1];
-            temp[0] = Name + "," + Hohe + ";" + Breite;
+            temp[0] = Name + "," + Hohe + ";" + Breite+"#0";
             for(int f = 1; f < temp.Length; f++)
-                temp[f] = Controls[f - 1].Tag + "," + Controls[f - 1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f - 1].Location.Y / (PanelSize.Width / Breite)+"#0";
+                temp[f] = Controls[f - 1].Tag + "," + Controls[f - 1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f - 1].Location.Y / (PanelSize.Width / Breite);
             controlCollections.Add(temp);
         }
         public void Add(Control.ControlCollection Controls, Size PanelSize, int Hohe, int Breite, string Name,int index)
         {
             string[] temp = new string[Controls.Count+1];
-            temp[0] = Name + "," + Hohe + ";" + Breite;
+            temp[0] = Name + "," + Hohe + ";" + Breite + "#" + temp[0].Split('#')[1];
             for (int f = 1; f < temp.Length; f++)
-                temp[f] = Controls[f-1].Tag + "," + Controls[f-1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f-1].Location.Y / (PanelSize.Width / Breite)+"#"+temp[f].Split('#')[1];
+                temp[f] = Controls[f-1].Tag + "," + Controls[f-1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f-1].Location.Y / (PanelSize.Width / Breite);
             controlCollections[index]=(temp);
         }
         public void speichern(string path)
@@ -68,26 +68,51 @@ namespace Pushy
             Control[] erg = new Control[controlCollections[Levelindex].Length-1];
             for (int f = 0; f < erg.Length; f++)
             {
-                Console.WriteLine("-----\n"+controlCollections[Levelindex][f]);
+                Console.WriteLine("-----\n"+controlCollections[Levelindex][f+1]);
                 erg[f] = new PictureBox
                 {
-                    Tag = controlCollections[Levelindex][f+1].Split(',')[0],
-                    Location = new Point(Convert.ToInt32(controlCollections[Levelindex][f+1].Split(',')[1].Split(';')[0]) * size.Height, Convert.ToInt32(controlCollections[Levelindex][f+1].Split(',')[1].Split(';')[1]) * size.Width),
+                    Tag = controlCollections[Levelindex][f + 1].Split(',')[0],
+                    Location = new Point(Convert.ToInt32(controlCollections[Levelindex][f + 1].Split(',')[1].Split(';')[0]) * size.Height, Convert.ToInt32(controlCollections[Levelindex][f + 1].Split(',')[1].Split(';')[1]) * size.Width),
                     Size = size,
-                    SizeMode = PictureBoxSizeMode.Zoom
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    BackgroundImage = Properties.Resources.Boden
                 };
                 switch (controlCollections[Levelindex][f+1].Split(',')[0].Split('.')[0]) //Garfiken hinzufügen
                 {
                     case "Mauer": (erg[f] as PictureBox).Image = Properties.Resources.Mauer; erg[f].BackColor = Color.Red; break;
                     case "Kasten": (erg[f] as PictureBox).Image = Properties.Resources.Kasten; erg[f].BackColor = Color.Gray; break;
-                    case "Kugel": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_rot; break;
-                    case "Kugelziel": (erg[f] as PictureBox).Image = Properties.Resources.Kugelziel_blau; break;
+                    case "Kugel":
+                        switch(controlCollections[Levelindex][f + 1].Split(',')[0].Split('.')[1])
+                        {
+                            case "blau": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_blau; break;
+                            case "rot": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_rot; break;
+                            case "gruen": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_gruen; break;
+                            case "gelb": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_gelb; break;
+                        }
+                        break;
+                    case "KugelZiel":
+                        switch (controlCollections[Levelindex][f + 1].Split(',')[0].Split('.')[1])
+                        {
+                            case "blau": (erg[f] as PictureBox).Image = Properties.Resources.Kugelziel_blau; break;
+                            case "rot": (erg[f] as PictureBox).Image = Properties.Resources.Kugelziel_rot; break;
+                            case "gruen": (erg[f] as PictureBox).Image = Properties.Resources.Kugelziel_gruen; break;
+                            case "gelb": (erg[f] as PictureBox).Image = Properties.Resources.Kugelziel_gelb; break;
+                        }
+                        break;
                     case "Bariere": (erg[f] as PictureBox).Image = Properties.Resources.Barier; break;
-                    case "Haus": (erg[f] as PictureBox).Image = Properties.Resources.Haus; erg[f].BackColor = Color.Black; break;
+                    case "Haus": (erg[f] as PictureBox).Image = Properties.Resources.Haus;  break;
                     case "Knopf": (erg[f] as PictureBox).Image = Properties.Resources.Knopf; break;
                     case "Teleporter": (erg[f] as PictureBox).Image = Properties.Resources.Teleporter; break;
-                    case "Player": (erg[f] as PictureBox).Image = Properties.Resources.Player; erg[f].BackColor = Color.Green; break;
-                    case "Farbklecks": break;
+                    case "Player": (erg[f] as PictureBox).Image = Properties.Resources.Player;  break;
+                    case "Farbklecks":
+                        switch (controlCollections[Levelindex][f + 1].Split(',')[0].Split('.')[1])
+                        {
+                            case "blau": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_blau; break;
+                            case "rot": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_rot; break;
+                            case "gruen": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_gruen; break;
+                            case "gelb": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_gelb; break;
+                        }
+                        break; 
                 }
             }
             return erg;
@@ -95,7 +120,7 @@ namespace Pushy
         public int Length() => controlCollections.Count;
         public string GetName(int index) =>controlCollections[index][0].Split(',')[0];
         public int GetHohe(int index) => Convert.ToInt32(controlCollections[index][0].Split(',')[1].Split(';')[0]);
-        public int GetBreite(int index) => Convert.ToInt32(controlCollections[index][0].Split(',')[1].Split(';')[1]);
+        public int GetBreite(int index) => Convert.ToInt32(controlCollections[index][0].Split(',')[1].Split(';')[1].Split('#')[0]);
         public bool SetHighscore(int index, int time)
         {
             if (time >= Convert.ToInt32(controlCollections[index][0].Split('#')[1])) return false;

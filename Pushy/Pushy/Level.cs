@@ -75,7 +75,8 @@ namespace Pushy
             timer.Stop();
             if (speicher.SetHighscore(level, Convert.ToInt32(label1.Text)))
                 MessageBox.Show("New Highscore");
-            MessageBox.Show("Gewonnen");
+            MessageBox.Show("Gewonnen\nZeit: "+label1.Text+" sek");
+            Close();
         }
         private bool Uberprufung(Point PlayerLocation, bool IsPlayer, Control Player)
         {
@@ -316,6 +317,11 @@ namespace Pushy
             Seite = Player.Width;
             IsBarrier = false;
             label1.Text = "0";
+        }
+
+        private void Level_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer.Stop();
         }
 
         private void KugelVersenkt(string Farbe, Control Kugel)
