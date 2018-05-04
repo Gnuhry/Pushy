@@ -121,15 +121,6 @@
   <data name="Barier" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_restaurant_menu_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Haus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_home_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Knopf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_airplanemode_active_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Teleporter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_send_black_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Boden" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PuschyBoden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -165,5 +156,26 @@
   </data>
   <data name="Player" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pushy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Flarbklecksblau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flarbklecksblau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Flarbklecksgelb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flarbklecksgelb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Flarbklecksgreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flarbklecksgreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Flarbklecksrot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flarbklecksrot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Haus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Haus.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Knopf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Knopf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Teleporter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\teleporter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
