@@ -345,6 +345,7 @@
             this.MinimumSize = new System.Drawing.Size(789, 489);
             this.Name = "LevelEditor";
             this.Text = "LevelEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.numIndex)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHohe)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBreite)).EndInit();

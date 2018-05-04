@@ -81,11 +81,15 @@ namespace Pushy
             }
             else if (((sender as Control).Tag + "").Split('.')[0] == "Teleporter"|| ((sender as Control).Tag + "").Split('.')[0] == "Knopf")
             {
+                numIndex.Maximum = 30;
+                numIndex.Minimum = 0;
                 numIndex.Visible = true;
                 numIndex.Value = Convert.ToInt32(((sender as Control).Tag + "").Split('.')[1]);
             }
             else if (((sender as Control).Tag + "").Split('.')[0] == "KnopfMauer")
             {
+                numIndex.Maximum = 30;
+                numIndex.Minimum = 0;
                 numIndex.Visible = true;
                 numIndex.Value = Convert.ToInt32(((sender as Control).Tag + "").Split('.')[1]);
                 cBoxIsKnopfMauer.Visible = true;
@@ -95,6 +99,34 @@ namespace Pushy
             {
                 cBoxIsKnopfMauer.Visible = true;
                 cBoxIsKnopfMauer.Checked = false;
+            }
+            else if ((sender as Control).Tag + "" == "Player2")
+            {
+                numIndex.Visible = true;
+                numIndex.Value = 2;
+                numIndex.Maximum = 2;
+                numIndex.Minimum = 1;
+            }
+            else if((sender as Control).Tag + "" == "Player")
+            {
+                numIndex.Visible = true;
+                numIndex.Value = 1;
+                numIndex.Maximum = 2;
+                numIndex.Minimum = 1;
+            }
+            else if ((sender as Control).Tag + "" == "Haus2")
+            {
+                numIndex.Visible = true;
+                numIndex.Value = 2;
+                numIndex.Maximum = 2;
+                numIndex.Minimum = 1;
+            }
+            else if ((sender as Control).Tag + "" == "Haus")
+            {
+                numIndex.Visible = true;
+                numIndex.Value = 1;
+                numIndex.Maximum = 2;
+                numIndex.Minimum = 1;
             }
             //(sender as Control).KeyDown += LevelEditor_KeyDown;
 
@@ -182,6 +214,17 @@ namespace Pushy
 
         private void numIndex_ValueChanged(object sender, EventArgs e)
         {
+            if (Sender.Tag + "" == "Player" || Sender.Tag + "" == "Player2")
+            {
+                if (numIndex.Value == 1) { Sender.Tag = "Player";(Sender as PictureBox).Image = Properties.Resources.Player; }
+                else { Sender.Tag = "Player2"; (Sender as PictureBox).Image = Properties.Resources.Player2; }
+            }
+            else if (Sender.Tag + "" == "Haus" || Sender.Tag + "" == "Haus2")
+            {
+                if (numIndex.Value == 1) { Sender.Tag = "Haus"; (Sender as PictureBox).Image = Properties.Resources.Haus; }
+                else { Sender.Tag = "Haus2"; (Sender as PictureBox).Image = Properties.Resources.Haus2; }
+            }
+            else
             Sender.Tag = (Sender.Tag+"").Split('.')[0]+"." + ((int)numIndex.Value);
         }
 
@@ -209,15 +252,17 @@ namespace Pushy
 
         private void btnSpeichern_Click(object sender, EventArgs e)
         {
-            int PlayerC = 0, HausC = 0, Fehler=0;
+            int PlayerC = 0, Player2C = 0, HausC = 0, Haus2C = 0, Fehler =0;
             for(int f = 0; f < panel1.Controls.Count; f++)
             {
                 switch ((panel1.Controls[f].Tag + "").Split('.')[0])
                 {
                     case "Player": PlayerC++; break;
+                    case "Player2": Player2C++; break;
                     case "Haus": HausC++; break;
+                    case "Haus2": Haus2C++; break;
                 }
-                if((panel1.Controls[f].Tag + "").Split('.')[0] != "Mauer")
+                if ((panel1.Controls[f].Tag + "").Split('.')[0] != "Mauer")
                 {
                     for(int g=0;g<panel1.Controls.Count;g++)
                         if (panel1.Controls[f].Location == panel1.Controls[g].Location&&panel1.Controls[f]!=panel1.Controls[g])
@@ -227,8 +272,9 @@ namespace Pushy
                         }
                 }
             }
-            if (PlayerC != 1) { MessageBox.Show("Nur ein Spieler!"); Fehler++; }
-            if (HausC != 1) { MessageBox.Show("Nur ein Haus!"); Fehler++; }
+            if (PlayerC!=1||Player2C>1||Player2C<0) { MessageBox.Show("Nur ein/zwei Spieler!"); Fehler++; }
+            if (HausC != 1||Haus2C>1||Haus2C<0) { MessageBox.Show("Nur ein/zwei Haus/Häuser!"); Fehler++; }
+            if (Player2C == 1 && Haus2C != 1) { MessageBox.Show("Zweites Haus fehlt"); Fehler++; }
             if (Fehler > 0) return;
             if (!beatbeiten)
                 speicher.Add(panel1.Controls, panel1.Size, Hohe, Breite, txBName.Text,Level);
@@ -275,6 +321,10 @@ namespace Pushy
         {
 
         }
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -294,10 +344,6 @@ namespace Pushy
             Close();
         }
 
-        private void panel1_MouseUp(object sender, MouseEventArgs e)
-        {
-
-        }
 
         private void cBoxFarbe_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -6,7 +6,7 @@ namespace Pushy
 {
     public partial class Level : Form
     {
-        Control Player;
+        Control Player,Player2;
         static int Hoch, Seite;
         bool IsBarrier;
         Speicher speicher;
@@ -28,6 +28,8 @@ namespace Pushy
             {
                 if (panel1.Controls[f].Tag + "" == "Player")
                     Player = panel1.Controls[f];
+                else if (panel1.Controls[f].Tag + "" == "Player2")
+                    Player2 = panel1.Controls[f];
                 if ((panel1.Controls[f].Tag + "").Split('.')[0] == "KnopfMauer")
                     panel1.Controls[f].EnabledChanged += KnopfMauer_EnabledChanged;
             }
@@ -46,16 +48,38 @@ namespace Pushy
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            int Player1=0;
             Point temp = Player.Location;
-            if (e.KeyData == Keys.Down) temp.Offset(0, Player.Height);
-            else if (e.KeyData == Keys.Up) temp.Offset(0, -Player.Height);
-            else if (e.KeyData == Keys.Right) temp.Offset(Player.Width, 0);
-            else if (e.KeyData == Keys.Left) temp.Offset(-Player.Width, 0);
-            else return;
-            if (Uberprufung(temp, true, Player))
+            if (Player != null)
+            {            
+                if (e.KeyData == Keys.Down) { temp.Offset(0, Player.Height); Player1 = 1; }
+                else if (e.KeyData == Keys.Up) { temp.Offset(0, -Player.Height); Player1 = 1; }
+                else if (e.KeyData == Keys.Right) { temp.Offset(Player.Width, 0); Player1 = 1; }
+                else if (e.KeyData == Keys.Left) { temp.Offset(-Player.Width, 0); Player1 = 1; }
+            }
+            if (Player2 != null)
             {
-                Player.Location = temp;
-                Knopf_Aktiv();
+                if (e.KeyData == Keys.S) { temp = Player2.Location; temp.Offset(0, Player2.Height); Player1 = 2; }
+                else if (e.KeyData == Keys.W) { temp = Player2.Location; temp.Offset(0, -Player2.Height); Player1 = 2; }
+                else if (e.KeyData == Keys.D) { temp = Player2.Location; temp.Offset(Player2.Width, 0); Player1 = 2; }
+                else if (e.KeyData == Keys.A) { temp = Player2.Location; temp.Offset(-Player2.Width, 0); Player1 = 2; }
+            }
+            if (Player1 == 0) return;
+            if (Player1==1)
+            {
+                if (Uberprufung(temp, true, Player))
+                {
+                    Player.Location = temp;
+                    Knopf_Aktiv();
+                }
+            }
+            else if(Player1==2)
+            {
+                if (Uberprufung(temp, true, Player2))
+                {
+                    Player2.Location = temp;
+                    Knopf_Aktiv();
+                }
             }
         }
         private void KnopfMauer_EnabledChanged(object sender, EventArgs e)
@@ -70,7 +94,29 @@ namespace Pushy
             for (int f = 0; f < panel1.Controls.Count; f++)
             {
                 if (panel1.Controls[f].Enabled && panel1.Controls[f].Visible)
+                {
                     if (("" + panel1.Controls[f].Tag).Split('.')[0] == "Kugel") return;
+                    if ("" + panel1.Controls[f].Tag == "Haus")
+                    {
+                        if ((Player.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                           panel1.Controls[f].Location.X < Player.Location.X + Player.Size.Width &&
+                           Player.Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                           panel1.Controls[f].Location.Y < Player.Location.Y + Player.Size.Height)) {  }
+                        else
+  
+                            return;
+                    }
+                    if ("" + panel1.Controls[f].Tag == "Haus2")
+                    {
+                        if (!(Player2.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                           panel1.Controls[f].Location.X < Player2.Location.X + Player2.Size.Width &&
+                           Player2.Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                           panel1.Controls[f].Location.Y < Player2.Location.Y + Player2.Size.Height)) { }
+                        else
+                            return;
+                    }
+                }
+
             }
             timer.Stop();
             if (speicher.SetHighscore(level, Convert.ToInt32(label1.Text)))
@@ -80,6 +126,24 @@ namespace Pushy
         }
         private bool Uberprufung(Point PlayerLocation, bool IsPlayer, Control Player)
         {
+            if (Player2 != null)
+            {
+                if (Player == this.Player||!IsPlayer)
+                {
+                    if (PlayerLocation.X < Player2.Location.X + Player2.Width &
+                           Player2.Location.X < PlayerLocation.X + Player.Size.Width &&
+                           PlayerLocation.Y < Player2.Location.Y + Player2.Height &&
+                           Player2.Location.Y < PlayerLocation.Y + Player.Size.Height) { Console.WriteLine("Player2"); return false; }
+                }
+                if (Player == Player2||!IsPlayer)
+                {
+                    if (PlayerLocation.X < this.Player.Location.X + this.Player.Width &
+                           this.Player.Location.X < PlayerLocation.X + Player.Size.Width &&
+                           PlayerLocation.Y < this.Player.Location.Y + this.Player.Height &&
+                           this.Player.Location.Y < PlayerLocation.Y + Player.Size.Height) { Console.WriteLine("Player"); return false; }
+                }
+                
+            }
             for (int f = 0; f < panel1.Controls.Count; f++)
             {
                 if (panel1.Controls[f].Visible)
@@ -95,7 +159,7 @@ namespace Pushy
                             return false;
                         }
                     }
-                    else if ("" + panel1.Controls[f].Tag == "Haus")
+                    else if ("" + panel1.Controls[f].Tag == "Haus"|| "" + panel1.Controls[f].Tag == "Haus2")
                     {
                         if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
                        panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
@@ -265,7 +329,7 @@ namespace Pushy
                     aa = true;
                     for (int g = 0; g < panel1.Controls.Count && aa; g++)
                     {
-                        if (panel1.Controls[g] == Player || panel1.Controls[g].Tag + "" == "Kasten" || (panel1.Controls[g].Tag + "").Split('.')[0] == "Kugel")
+                        if (panel1.Controls[g] == Player || panel1.Controls[g] == Player2 || panel1.Controls[g].Tag + "" == "Kasten" || (panel1.Controls[g].Tag + "").Split('.')[0] == "Kugel")
                         {
                             if (panel1.Controls[g].Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
                             panel1.Controls[f].Location.X < panel1.Controls[g].Location.X + panel1.Controls[g].Size.Width &&
@@ -310,6 +374,8 @@ namespace Pushy
             {
                 if (panel1.Controls[f].Tag + "" == "Player")
                     Player = panel1.Controls[f];
+                if (panel1.Controls[f].Tag + "" == "Player2")
+                    Player2 = panel1.Controls[f];
                 if ((panel1.Controls[f].Tag + "").Split('.')[0] == "KnopfMauer")
                     panel1.Controls[f].EnabledChanged += KnopfMauer_EnabledChanged;
             }

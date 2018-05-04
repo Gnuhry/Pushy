@@ -51,7 +51,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2.BackgroundImage = global::Pushy.Properties.Resources.Boden;
+            this.panel2.BackgroundImage = global::Pushy.Properties.Resources.Mauer;
             this.panel2.Location = new System.Drawing.Point(12, 29);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(20, 400);
@@ -60,7 +60,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel3.BackgroundImage = global::Pushy.Properties.Resources.Boden;
+            this.panel3.BackgroundImage = global::Pushy.Properties.Resources.Mauer;
             this.panel3.Location = new System.Drawing.Point(432, 29);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(20, 400);
@@ -69,7 +69,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel4.BackgroundImage = global::Pushy.Properties.Resources.Boden;
+            this.panel4.BackgroundImage = global::Pushy.Properties.Resources.Mauer;
             this.panel4.Location = new System.Drawing.Point(12, 429);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(440, 20);
@@ -78,7 +78,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel5.BackgroundImage = global::Pushy.Properties.Resources.Boden;
+            this.panel5.BackgroundImage = global::Pushy.Properties.Resources.Mauer;
             this.panel5.Location = new System.Drawing.Point(12, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(440, 20);
@@ -125,6 +125,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(658, 498);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Name = "Level";
             this.Text = "Level";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level_FormClosing);

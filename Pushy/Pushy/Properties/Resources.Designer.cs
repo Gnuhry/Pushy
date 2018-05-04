@@ -22,7 +22,7 @@ namespace Pushy.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Pushy.Properties {
         ///   Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Pushy.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Pushy.Properties {
         ///   Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Barier {
+        internal static System.Drawing.Bitmap Barier {
             get {
                 object obj = ResourceManager.GetObject("Barier", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Boden {
+        internal static System.Drawing.Bitmap Boden {
             get {
                 object obj = ResourceManager.GetObject("Boden", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Flarbklecks_blau {
+        internal static System.Drawing.Bitmap Flarbklecks_blau {
             get {
                 object obj = ResourceManager.GetObject("Flarbklecks_blau", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +93,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Flarbklecks_gelb {
+        internal static System.Drawing.Bitmap Flarbklecks_gelb {
             get {
                 object obj = ResourceManager.GetObject("Flarbklecks_gelb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +103,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Flarbklecks_gruen {
+        internal static System.Drawing.Bitmap Flarbklecks_gruen {
             get {
                 object obj = ResourceManager.GetObject("Flarbklecks_gruen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +113,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Flarbklecks_rot {
+        internal static System.Drawing.Bitmap Flarbklecks_rot {
             get {
                 object obj = ResourceManager.GetObject("Flarbklecks_rot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +123,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Haus {
+        internal static System.Drawing.Bitmap Haus {
             get {
                 object obj = ResourceManager.GetObject("Haus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +133,17 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kasten {
+        internal static System.Drawing.Bitmap Haus2 {
+            get {
+                object obj = ResourceManager.GetObject("Haus2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Kasten {
             get {
                 object obj = ResourceManager.GetObject("Kasten", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,7 +153,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Knopf {
+        internal static System.Drawing.Bitmap Knopf {
             get {
                 object obj = ResourceManager.GetObject("Knopf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +163,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kugel_blau {
+        internal static System.Drawing.Bitmap Kugel_blau {
             get {
                 object obj = ResourceManager.GetObject("Kugel_blau", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +173,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kugel_gelb {
+        internal static System.Drawing.Bitmap Kugel_gelb {
             get {
                 object obj = ResourceManager.GetObject("Kugel_gelb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,7 +183,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kugel_gruen {
+        internal static System.Drawing.Bitmap Kugel_gruen {
             get {
                 object obj = ResourceManager.GetObject("Kugel_gruen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,7 +193,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kugel_rot {
+        internal static System.Drawing.Bitmap Kugel_rot {
             get {
                 object obj = ResourceManager.GetObject("Kugel_rot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -193,7 +203,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kugelziel_blau {
+        internal static System.Drawing.Bitmap Kugelziel_blau {
             get {
                 object obj = ResourceManager.GetObject("Kugelziel_blau", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +213,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kugelziel_gelb {
+        internal static System.Drawing.Bitmap Kugelziel_gelb {
             get {
                 object obj = ResourceManager.GetObject("Kugelziel_gelb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +223,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kugelziel_gruen {
+        internal static System.Drawing.Bitmap Kugelziel_gruen {
             get {
                 object obj = ResourceManager.GetObject("Kugelziel_gruen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +233,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Kugelziel_rot {
+        internal static System.Drawing.Bitmap Kugelziel_rot {
             get {
                 object obj = ResourceManager.GetObject("Kugelziel_rot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -233,7 +243,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Mauer {
+        internal static System.Drawing.Bitmap Mauer {
             get {
                 object obj = ResourceManager.GetObject("Mauer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +253,7 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Player {
+        internal static System.Drawing.Bitmap Player {
             get {
                 object obj = ResourceManager.GetObject("Player", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -253,7 +263,17 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Teleporter {
+        internal static System.Drawing.Bitmap Player2 {
+            get {
+                object obj = ResourceManager.GetObject("Player2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Teleporter {
             get {
                 object obj = ResourceManager.GetObject("Teleporter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

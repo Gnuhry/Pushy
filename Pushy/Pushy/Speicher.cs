@@ -103,10 +103,12 @@ namespace Pushy
                         }
                         break;
                     case "Bariere": (erg[f] as PictureBox).Image = Properties.Resources.Barier; break;
-                    case "Haus": (erg[f] as PictureBox).Image = Properties.Resources.Haus;  break;
+                    case "Haus": (erg[f] as PictureBox).Image = Properties.Resources.Haus; break;
+                    case "Haus2": (erg[f] as PictureBox).Image = Properties.Resources.Haus2;  break;
                     case "Knopf": (erg[f] as PictureBox).Image = Properties.Resources.Knopf; break;
                     case "Teleporter": (erg[f] as PictureBox).Image = Properties.Resources.Teleporter; break;
-                    case "Player": (erg[f] as PictureBox).Image = Properties.Resources.Player;  break;
+                    case "Player": (erg[f] as PictureBox).Image = Properties.Resources.Player; break;
+                    case "Player2": (erg[f] as PictureBox).Image = Properties.Resources.Player2;  break;
                     case "Farbklecks":
                         switch (controlCollections[Levelindex][f + 1].Split(',')[0].Split('.')[1])
                         {
