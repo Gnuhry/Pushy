@@ -7,7 +7,7 @@ namespace Pushy
 {
     public partial class LevelEditor : Form
     {
-        private Control activeControl,Sender;
+        private Control activeControl,Sender,ASender;
         private Point previousPosition;
         private int Breite, Hohe;
         private Speicher speicher;
@@ -58,8 +58,16 @@ namespace Pushy
             Console.WriteLine(temp.ToString());
             (sender as Control).Location = temp;
             cBoxIsKnopfMauer.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
-           // MessageBox.Show((((sender as Control).Tag + "").Split('.')[0] ) + "");
-
+            // MessageBox.Show((((sender as Control).Tag + "").Split('.')[0] ) + "");
+            if (ASender != null)
+            {
+                ASender.BackColor = Color.Empty;
+                ASender.BackgroundImage = Properties.Resources.Boden;
+            }
+            ASender = sender as Control;
+            (sender as Control).BackColor = Color.Orange;
+            (sender as Control).BackgroundImage = null;
+            
             if (((sender as Control).Tag+"").Split('.')[0]=="Kugel"|| ((sender as Control).Tag + "").Split('.')[0] == "KugelZiel" || ((sender as Control).Tag + "").Split('.')[0] == "Farbklecks")
             {
                 cBoxFarbe.Visible = true;
@@ -180,6 +188,12 @@ namespace Pushy
         private void panel1_Click(object sender, EventArgs e)
         {
             Sender = null;
+            if (ASender != null)
+            {
+                ASender.BackColor = Color.Empty;
+                ASender.BackgroundImage = Properties.Resources.Boden;
+            }
+            ASender = null;
             cBoxIsKnopfMauer.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
         }
 
@@ -188,6 +202,7 @@ namespace Pushy
             if (Sender == null) return;
             Sender.Dispose();
             Sender = null;
+            ASender = null;
             cBoxIsKnopfMauer.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
 
         }
