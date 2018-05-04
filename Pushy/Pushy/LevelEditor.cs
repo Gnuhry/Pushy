@@ -160,7 +160,7 @@ namespace Pushy
                 case "Knopf": temp.Image = Properties.Resources.Knopf; temp.Tag += ".1"; break;
                 case "Teleporter": temp.Image = Properties.Resources.Teleporter; temp.Tag += ".1"; break;
                 case "Player": temp.Image = Properties.Resources.Player; break;
-                case "Farbklecks": temp.Tag += ".rot"; break;
+                case "Farbklecks": temp.Image = Properties.Resources.Flarbklecks_rot; temp.Tag += ".rot"; break;
             }
             panel1.Controls.Add(temp);
             Console.WriteLine(temp.Tag);
@@ -314,10 +314,10 @@ namespace Pushy
             else if ((Sender.Tag + "").Split('.')[0] == "Farbklecks")
                 switch (cBoxFarbe.SelectedIndex)
                 {
-                    case 0: Sender.Tag = "Farbklecks.blau"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_blau; break;
-                    case 1: Sender.Tag = "Farbklecks.rot"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_rot; break;
-                    case 2: Sender.Tag = "Farbklecks.gruen"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_gruen; break;
-                    case 3: Sender.Tag = "Farbklecks.gelb"; (Sender as PictureBox).Image = Properties.Resources.Kugelziel_gelb; break;
+                    case 0: Sender.Tag = "Farbklecks.blau"; (Sender as PictureBox).Image = Properties.Resources.Flarbklecks_blau; break;
+                    case 1: Sender.Tag = "Farbklecks.rot"; (Sender as PictureBox).Image = Properties.Resources.Flarbklecks_rot; break;
+                    case 2: Sender.Tag = "Farbklecks.gruen"; (Sender as PictureBox).Image = Properties.Resources.Flarbklecks_gruen; break;
+                    case 3: Sender.Tag = "Farbklecks.gelb"; (Sender as PictureBox).Image = Properties.Resources.Flarbklecks_gelb; break;
                 }
         }
 

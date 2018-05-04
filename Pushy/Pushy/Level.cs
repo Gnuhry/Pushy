@@ -342,6 +342,13 @@ namespace Pushy
                   panel1.Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height)
                     {
                         Kugel.Tag = "Kugel." + ("" + panel1.Controls[f].Tag).Split('.')[1];
+                        switch(("" + panel1.Controls[f].Tag).Split('.')[1])
+                        {
+                             case "blau": (Kugel as PictureBox).Image = Properties.Resources.Kugel_blau; break;
+                            case "rot": (Kugel as PictureBox).Image = Properties.Resources.Kugel_rot; break;
+                            case "gruen": (Kugel as PictureBox).Image = Properties.Resources.Kugel_gruen; break;
+                            case "gelb": (Kugel as PictureBox).Image = Properties.Resources.Kugel_gelb; break;
+                        }
                         panel1.Controls[f].Visible = false;
                         return;
                     }

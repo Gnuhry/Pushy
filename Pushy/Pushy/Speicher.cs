@@ -109,10 +109,10 @@ namespace Pushy
                     case "Farbklecks":
                         switch (controlCollections[Levelindex][f + 1].Split(',')[0].Split('.')[1])
                         {
-                            case "blau": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_blau; break;
-                            case "rot": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_rot; break;
-                            case "gruen": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_gruen; break;
-                            case "gelb": (erg[f] as PictureBox).Image = Properties.Resources.Kugel_gelb; break;
+                            case "blau": (erg[f] as PictureBox).Image = Properties.Resources.Flarbklecks_blau; break;
+                            case "rot": (erg[f] as PictureBox).Image = Properties.Resources.Flarbklecks_rot; break;
+                            case "gruen": (erg[f] as PictureBox).Image = Properties.Resources.Flarbklecks_gruen; break;
+                            case "gelb": (erg[f] as PictureBox).Image = Properties.Resources.Flarbklecks_gelb; break;
                         }
                         break; 
                 }

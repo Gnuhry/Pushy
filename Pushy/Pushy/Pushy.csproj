@@ -65,6 +65,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Speicher.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -76,15 +81,10 @@
       <DependentUpon>LevelEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,30 +100,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ic_airplanemode_active_black_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_android_black_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_free_breakfast_black_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_home_black_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_insert_invitation_black_24dp.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_restaurant_menu_black_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_send_black_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_web_black_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_work_black_24dp.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PushyKasten.png" />
