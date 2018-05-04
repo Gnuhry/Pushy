@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Level));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -52,7 +51,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImage = global::Pushy.Properties.Resources.Boden;
             this.panel2.Location = new System.Drawing.Point(12, 29);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(20, 400);
@@ -61,7 +60,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
+            this.panel3.BackgroundImage = global::Pushy.Properties.Resources.Boden;
             this.panel3.Location = new System.Drawing.Point(432, 29);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(20, 400);
@@ -70,7 +69,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel4.BackgroundImage")));
+            this.panel4.BackgroundImage = global::Pushy.Properties.Resources.Boden;
             this.panel4.Location = new System.Drawing.Point(12, 429);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(440, 20);
@@ -79,7 +78,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
+            this.panel5.BackgroundImage = global::Pushy.Properties.Resources.Boden;
             this.panel5.Location = new System.Drawing.Point(12, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(440, 20);

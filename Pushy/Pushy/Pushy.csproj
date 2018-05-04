@@ -161,5 +161,26 @@
   <ItemGroup>
     <None Include="Resources\PuschyBoden.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flarbklecksblau.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flarbklecksgelb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flarbklecksgreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Flarbklecksrot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Haus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teleporter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Knopf.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

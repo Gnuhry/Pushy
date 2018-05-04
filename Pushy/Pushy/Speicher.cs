@@ -77,7 +77,7 @@ namespace Pushy
                     SizeMode = PictureBoxSizeMode.Zoom,
                     BackgroundImage = Properties.Resources.Boden
                 };
-                switch (controlCollections[Levelindex][f+1].Split(',')[0].Split('.')[0]) //Garfiken hinzufügen
+                switch (controlCollections[Levelindex][f+1].Split(',')[0].Split('.')[0]) //Grafiken hinzufügen
                 {
                     case "Mauer": (erg[f] as PictureBox).Image = Properties.Resources.Mauer; erg[f].BackColor = Color.Red; break;
                     case "Kasten": (erg[f] as PictureBox).Image = Properties.Resources.Kasten; erg[f].BackColor = Color.Gray; break;
