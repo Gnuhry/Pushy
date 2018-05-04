@@ -19,7 +19,7 @@ namespace Pushy
         {
             if (Name.Trim() == "" || Name.Trim() == null) Name = "No Name";
             string[] temp = new string[Controls.Count+1];
-            temp[0] = Name + "," + Hohe + ";" + Breite+"#0";
+            temp[0] = Name + "," + Hohe + ";" + Breite+"#"+int.MaxValue;
             for(int f = 1; f < temp.Length; f++)
                 temp[f] = Controls[f - 1].Tag + "," + Controls[f - 1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f - 1].Location.Y / (PanelSize.Width / Breite);
             controlCollections.Add(temp);
