@@ -65,6 +65,7 @@ namespace Pushy
 
         }
         public string[] GetText(int Levelindex) => controlCollections[Levelindex];
+        public void Remove(int Levelindex) => controlCollections.RemoveAt(Levelindex);
         public Control[] GetControls(int Levelindex,Size size)//Eine Size
         {
             Control[] erg = new Control[controlCollections[Levelindex].Length-1];

@@ -35,7 +35,7 @@ namespace Pushy
             }
             txBName.Text = speicher.GetName(Level);
             if (txBName.Text == "No Name") txBName.Text = null;
-            button1.Visible = true;
+            button1.Visible =button2.Visible= true;
         }
 
 
@@ -236,7 +236,7 @@ namespace Pushy
                 speicher.Add(panel1.Controls,panel1.Size,Hohe,Breite,txBName.Text);
             speicher.speichern(Directory.GetCurrentDirectory()+@"\Datenbank.txt");
             MessageBox.Show("Erfolgreich gespeichert");
-            button1.Visible = true;
+            button1.Visible =button2.Visible= true;
         }
 
         private void btnClearen_Click(object sender, EventArgs e)
@@ -287,6 +287,12 @@ namespace Pushy
                 File.WriteAllLines(saveFileDialog1.FileName, speicher.GetText(Level));
             }
             }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            speicher.Remove(Level);
+            Close();
+        }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
