@@ -27,11 +27,12 @@ namespace Pushy
         public void Add(Control.ControlCollection Controls, Size PanelSize, int Hohe, int Breite, string Name,int index)
         {
             string[] temp = new string[Controls.Count+1];
-            temp[0] = Name + "," + Hohe + ";" + Breite + "#" + temp[0].Split('#')[1];
+            temp[0] = Name + "," + Hohe + ";" + Breite + "#" + controlCollections[index][0].Split('#')[1];
             for (int f = 1; f < temp.Length; f++)
                 temp[f] = Controls[f-1].Tag + "," + Controls[f-1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f-1].Location.Y / (PanelSize.Width / Breite);
             controlCollections[index]=(temp);
         }
+        public void Add(string[] text) => controlCollections.Add(text);
         public void speichern(string path)
         {
             leeren(path);
@@ -55,14 +56,15 @@ namespace Pushy
         }
         public void leeren(string path)
         {
-            
+
             File.Delete(path);
             FileStream FS = new FileStream(path, FileMode.Create);
             BinaryFormatter BF = new BinaryFormatter();
             BF.Serialize(FS, new Speicher());
             FS.Dispose();
-            
+
         }
+        public string[] GetText(int Levelindex) => controlCollections[Levelindex];
         public Control[] GetControls(int Levelindex,Size size)//Eine Size
         {
             Control[] erg = new Control[controlCollections[Levelindex].Length-1];

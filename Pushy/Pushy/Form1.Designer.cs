@@ -48,6 +48,8 @@
             this.btnLevelEditor = new System.Windows.Forms.Button();
             this.btnStarten = new System.Windows.Forms.Button();
             this.comBox = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcBRestart)).BeginInit();
@@ -252,11 +254,26 @@
             this.comBox.Size = new System.Drawing.Size(169, 21);
             this.comBox.TabIndex = 17;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(13, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(168, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Externes laden";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.comBox);
             this.Controls.Add(this.btnStarten);
             this.Controls.Add(this.btnLevelEditor);
@@ -311,6 +328,8 @@
         private System.Windows.Forms.Button btnLevelEditor;
         private System.Windows.Forms.Button btnStarten;
         private System.Windows.Forms.ComboBox comBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

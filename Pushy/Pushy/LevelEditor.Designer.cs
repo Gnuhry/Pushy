@@ -48,6 +48,8 @@
             this.numHohe = new System.Windows.Forms.NumericUpDown();
             this.numBreite = new System.Windows.Forms.NumericUpDown();
             this.lbFarbklecks = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHohe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBreite)).BeginInit();
@@ -199,7 +201,7 @@
             // 
             // btnSpeichern
             // 
-            this.btnSpeichern.Location = new System.Drawing.Point(659, 402);
+            this.btnSpeichern.Location = new System.Drawing.Point(690, 343);
             this.btnSpeichern.Name = "btnSpeichern";
             this.btnSpeichern.Size = new System.Drawing.Size(75, 23);
             this.btnSpeichern.TabIndex = 15;
@@ -229,7 +231,7 @@
             // 
             // txBName
             // 
-            this.txBName.Location = new System.Drawing.Point(630, 375);
+            this.txBName.Location = new System.Drawing.Point(584, 346);
             this.txBName.Name = "txBName";
             this.txBName.Size = new System.Drawing.Size(100, 20);
             this.txBName.TabIndex = 20;
@@ -290,11 +292,23 @@
             this.lbFarbklecks.Text = "Farbklecks";
             this.lbFarbklecks.Click += new System.EventHandler(this.label_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(584, 401);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(181, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Extern Speichern";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbFarbklecks);
             this.Controls.Add(this.numBreite);
             this.Controls.Add(this.numHohe);
@@ -348,5 +362,7 @@
         private System.Windows.Forms.NumericUpDown numHohe;
         private System.Windows.Forms.NumericUpDown numBreite;
         private System.Windows.Forms.Label lbFarbklecks;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button button1;
     }
 }
