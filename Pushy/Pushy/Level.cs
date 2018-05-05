@@ -302,7 +302,7 @@ namespace Pushy
                     }
                 }
             }
-            if (PlayerLocation.X < 0 || PlayerLocation.Y < 0 || PlayerLocation.X+Player.Height > panel1.Height || PlayerLocation.Y+Player.Width > panel1.Width)
+            if (PlayerLocation.X < 0 || PlayerLocation.Y < 0 || PlayerLocation.X+Player.Height > panel1.Width || PlayerLocation.Y+Player.Width > panel1.Height)
             {
                 Console.WriteLine("Außerhalb");
                 return false;
@@ -365,7 +365,7 @@ namespace Pushy
         private void pcBReset_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-            Control[] Controls = speicher.GetControls(level, new Size(panel1.Width / speicher.GetBreite(level), panel1.Height / speicher.GetHohe(level)));
+            Control[] Controls = speicher.GetControls(level, new Size(panel1.Height / speicher.GetHohe(level), panel1.Width / speicher.GetBreite(level)));
             for (int f = 0; f < Controls.Length; f++)
             {
                 panel1.Controls.Add(Controls[f]);
@@ -383,6 +383,20 @@ namespace Pushy
             Seite = Player.Width;
             IsBarrier = false;
             label1.Text = "0";
+        }
+
+        private void Level_Resize(object sender, EventArgs e)
+        {
+            /*Console.WriteLine(Convert.ToInt32(panel1.MinimumSize.Width * (Convert.ToDouble(Width) / MinimumSize.Width))+","+ Convert.ToInt32(panel1.MinimumSize.Height * (Convert.ToDouble(Height) / MinimumSize.Height)));
+            panel1.Size = new Size(Convert.ToInt32(panel1.MinimumSize.Width * (Convert.ToDouble(Width) / MinimumSize.Width)) ,Convert.ToInt32(panel1.MinimumSize.Height * (Convert.ToDouble(Height) / MinimumSize.Height)));
+            pcBReset_Click(null,null);*/
+        }
+
+        private void Level_SizeChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(Convert.ToInt32(panel1.MinimumSize.Width * (Convert.ToDouble(Width) / MinimumSize.Width)) + "," + Convert.ToInt32(panel1.MinimumSize.Height * (Convert.ToDouble(Height) / MinimumSize.Height)));
+            panel1.Size = new Size(Convert.ToInt32(panel1.MinimumSize.Width * (Convert.ToDouble(Width) / MinimumSize.Width)), Convert.ToInt32(panel1.MinimumSize.Height * (Convert.ToDouble(Height) / MinimumSize.Height)));
+            pcBReset_Click(null, null);
         }
 
         private void Level_FormClosing(object sender, FormClosingEventArgs e)

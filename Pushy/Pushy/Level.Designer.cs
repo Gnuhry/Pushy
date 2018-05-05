@@ -44,6 +44,7 @@
             // 
             this.panel1.BackgroundImage = global::Pushy.Properties.Resources.Boden;
             this.panel1.Location = new System.Drawing.Point(32, 29);
+            this.panel1.MinimumSize = new System.Drawing.Size(400, 400);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 400);
             this.panel1.TabIndex = 0;
@@ -125,10 +126,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(658, 498);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Name = "Level";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Level";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level_FormClosing);
+            this.SizeChanged += new System.EventHandler(this.Level_SizeChanged);
+            this.Resize += new System.EventHandler(this.Level_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).EndInit();
             this.ResumeLayout(false);
