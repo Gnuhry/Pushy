@@ -8,12 +8,10 @@ namespace Pushy
     {
         Control Player,Player2;
         static int Hoch, Seite;
-        bool IsBarrier;
+        bool IsBarrier,IsBarrier2, teleport, tp;
         Speicher speicher;
         int level;
         Timer timer;
-        Control[] DefaultContol;
-        bool teleport,tp;
         public Level(Speicher speicher,int Level)
         {
             teleport = tp = false;
@@ -23,7 +21,6 @@ namespace Pushy
             this.speicher = speicher;
             level = Level;
             Control[] Controls = speicher.GetControls(Level, new Size( panel1.Width / speicher.GetBreite(Level), panel1.Height / speicher.GetHohe(Level)));
-            DefaultContol = Controls;
             /*for (int f = 0; f < Controls.Length; f++)
             {
                 panel1.Controls.Add(Controls[f]);
@@ -42,7 +39,7 @@ namespace Pushy
             }
             Hoch = Player.Height;
             Seite = Player.Width;
-            IsBarrier = false;
+            IsBarrier=IsBarrier2 = false;
             KeyDown += Form1_KeyDown;
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;
@@ -202,7 +199,7 @@ namespace Pushy
             {
                 if (panel1.Controls[f].Visible)
                 {
-                    if ("" + panel1.Controls[f].Tag == "Mauer")
+                    if ("" + panel1.Controls[f].Tag == "Mauer"|| "" + panel1.Controls[f].Tag == "BombenMauer")
                     {
                         if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
                        panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
@@ -211,6 +208,82 @@ namespace Pushy
                         {
                             Console.WriteLine("Mauer");
                             return false;
+                        }
+                    }
+                    if ("" + panel1.Controls[f].Tag == "Loch")
+                    {
+                        if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                       panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
+                       PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                       panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
+                        {
+                            Console.WriteLine("Loch");
+                            if (!IsPlayer&&(Player.Tag+"").Split('.')[0]!="Kugel") { Player.Visible = false; panel1.Controls[f].Tag = null; (panel1.Controls[f] as PictureBox).Image = Properties.Resources.Boden; return true; }
+                            return false;
+                        }
+                    }
+                    else if ("" + panel1.Controls[f].Tag == "BombenKnopf")
+                    {
+                        if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                       panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
+                       PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                       panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
+                        {
+                            Console.WriteLine("Bombenknopf");
+                            panel1.Controls[f].Tag = null;
+                            for(int g = 0; g < panel1.Controls.Count; g++)
+                            {
+                                if (panel1.Controls[g].Tag + "" == "Bombe")
+                                {
+                                    for(int h = 0; h < panel1.Controls.Count; h++)
+                                    {
+                                        if (panel1.Controls[h].Tag + "" == "BombenMauer")
+                                        {
+                                            Point Location = panel1.Controls[g].Location;
+                                            Location.Offset(0, Player.Height);
+                                            if (Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Width &
+                      panel1.Controls[h].Location.X < Location.X + panel1.Controls[g].Size.Width &&
+                      Location.Y < panel1.Controls[h].Location.Y + panel1.Controls[h].Height &&
+                      panel1.Controls[h].Location.Y < Location.Y + panel1.Controls[g].Size.Height)
+                                            {
+                                                panel1.Controls[h].Tag = null;
+                                                (panel1.Controls[h] as PictureBox).Image = Properties.Resources.Boden;
+                                            }
+                                            Location = panel1.Controls[g].Location;
+                                            Location.Offset(0, -Player.Height);
+                                            if (Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Width &
+                      panel1.Controls[h].Location.X < Location.X + panel1.Controls[g].Size.Width &&
+                      Location.Y < panel1.Controls[h].Location.Y + panel1.Controls[h].Height &&
+                      panel1.Controls[h].Location.Y < Location.Y + panel1.Controls[g].Size.Height)
+                                            {
+                                                panel1.Controls[h].Tag = null;
+                                                (panel1.Controls[h] as PictureBox).Image = Properties.Resources.Boden;
+                                            }
+                                            Location = panel1.Controls[g].Location;
+                                            Location.Offset(Player.Height,0);
+                                            if (Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Width &
+                      panel1.Controls[h].Location.X < Location.X + panel1.Controls[g].Size.Width &&
+                      Location.Y < panel1.Controls[h].Location.Y + panel1.Controls[h].Height &&
+                      panel1.Controls[h].Location.Y < Location.Y + panel1.Controls[g].Size.Height)
+                                            {
+                                                panel1.Controls[h].Tag = null;
+                                                (panel1.Controls[h] as PictureBox).Image = Properties.Resources.Boden;
+                                            }
+                                            Location = panel1.Controls[g].Location;
+                                            Location.Offset(-Player.Height, 0);
+                                            if (Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Width &
+                      panel1.Controls[h].Location.X < Location.X + panel1.Controls[g].Size.Width &&
+                      Location.Y < panel1.Controls[h].Location.Y + panel1.Controls[h].Height &&
+                      panel1.Controls[h].Location.Y < Location.Y + panel1.Controls[g].Size.Height)
+                                            {
+                                                panel1.Controls[h].Tag = null;
+                                                (panel1.Controls[h] as PictureBox).Image = Properties.Resources.Boden;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            return true;
                         }
                     }
                     else if ("" + panel1.Controls[f].Tag == "Haus"|| "" + panel1.Controls[f].Tag == "Haus2")
@@ -237,7 +310,7 @@ namespace Pushy
                             for (int i = 0; i < panel1.Controls.Count; i++)
                             {
                                 if (i != f)
-                                    if (("" + panel1.Controls[i].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[i].Tag) == "Kasten")
+                                    if (("" + panel1.Controls[i].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[i].Tag) == "Kasten"|| ("" + panel1.Controls[i].Tag) == "Bombe")
                                     {
                                         if (panel1.Controls[i].Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
                          panel1.Controls[f].Location.X < panel1.Controls[i].Location.X + panel1.Controls[i].Size.Width &&
@@ -265,7 +338,7 @@ namespace Pushy
                                         for(int h = 0; h < panel1.Controls.Count; h++)
                                         {
                                             if (h != g)
-                                                if (("" + panel1.Controls[h].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[h].Tag) == "Kasten"|| panel1.Controls[h]==this.Player|| panel1.Controls[h]==Player2)
+                                                if (("" + panel1.Controls[h].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[h].Tag) == "Kasten"|| panel1.Controls[h]==this.Player|| panel1.Controls[h]==Player2 || ("" + panel1.Controls[h].Tag) == "Bombe")
                                                 {
                                                     if (panel1.Controls[h].Location.X < panel1.Controls[g].Location.X + panel1.Controls[g].Width &
                                      panel1.Controls[g].Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Size.Width &&
@@ -299,7 +372,16 @@ namespace Pushy
                             if (Uberprufung(point, false, panel1.Controls[f]))
                             {
                                 panel1.Controls[f].Location = point;
-                                if (IsBarrier && IsPlayer)
+                                if (IsBarrier && IsPlayer&&Player==this.Player)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                if (IsBarrier2 && IsPlayer && Player == this.Player2)
                                 {
                                     PictureBox bar = new PictureBox();
                                     bar.Size = Player.Size;
@@ -313,7 +395,78 @@ namespace Pushy
                             }
                             if (tp)
                             {
-                                if (IsBarrier && IsPlayer)
+                                if (IsBarrier && IsPlayer &&Player==this.Player)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                if (IsBarrier2 && IsPlayer&&Player==Player2)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                tp = false;
+                                return true;
+                            }
+                            return false;
+                        }
+                    }
+                    else if ("" + panel1.Controls[f].Tag == "Bombe")
+                    {
+
+                        if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                       panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
+                       PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                       panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
+                        {
+                            Console.WriteLine("Bombe");
+                            if (!IsPlayer) return false;
+                            Point point = panel1.Controls[f].Location;
+                            point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
+                            if (Uberprufung(point, false, panel1.Controls[f]))
+                            {
+                                panel1.Controls[f].Location = point;
+                                if (IsBarrier && IsPlayer && Player == this.Player)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                if (IsBarrier2 && IsPlayer && Player == this.Player2)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                teleport = true;
+                                return true;
+                            }
+                            if (tp)
+                            {
+                                if (IsBarrier && IsPlayer && Player == this.Player)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                if (IsBarrier2 && IsPlayer && Player == Player2)
                                 {
                                     PictureBox bar = new PictureBox();
                                     bar.Size = Player.Size;
@@ -344,7 +497,16 @@ namespace Pushy
                             {
                                 panel1.Controls[f].Location = point;
                                 //KugelVersenkt(("" + panel1.Controls[f].Tag).Split('.')[1], panel1.Controls[f]);
-                                if (IsBarrier && IsPlayer)
+                                if (IsBarrier && IsPlayer&&Player==this.Player)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                if (IsBarrier2 && IsPlayer&&Player==Player2)
                                 {
                                     PictureBox bar = new PictureBox();
                                     bar.Size = Player.Size;
@@ -358,7 +520,16 @@ namespace Pushy
                             }
                             if (tp)
                             {
-                                if (IsBarrier && IsPlayer)
+                                if (IsBarrier && IsPlayer&&Player==this.Player)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                if (IsBarrier2 && IsPlayer &&Player==Player2)
                                 {
                                     PictureBox bar = new PictureBox();
                                     bar.Size = Player.Size;
@@ -412,7 +583,10 @@ namespace Pushy
                         {
                             Console.WriteLine("Barrier");
                             if (!IsPlayer) return false;
+                            if(Player==this.Player)
                             IsBarrier = true;
+                            if (Player ==Player2)
+                                IsBarrier2 = true;
                             return true;
                         }
                     }
@@ -473,7 +647,16 @@ namespace Pushy
                 Console.WriteLine("Außerhalb");
                 return false;
             }
-            if (IsBarrier && IsPlayer)
+            if (IsBarrier && IsPlayer&&Player==this.Player)
+            {
+                PictureBox bar = new PictureBox();
+                bar.Size = Player.Size;
+                bar.Location = PlayerLocation;
+                bar.BackColor = Color.Green;
+                bar.Tag = "Barrier";
+                panel1.Controls.Add(bar);
+            }
+            if (IsBarrier2 && IsPlayer&&Player==Player2)
             {
                 PictureBox bar = new PictureBox();
                 bar.Size = Player.Size;
@@ -550,7 +733,7 @@ namespace Pushy
             }
             Hoch = Player.Height;
             Seite = Player.Width;
-            IsBarrier = false;
+            IsBarrier =IsBarrier2= false;
             label1.Text = "0";
             KeyDown += Form1_KeyDown;
         }

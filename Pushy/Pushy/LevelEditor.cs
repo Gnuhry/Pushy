@@ -57,7 +57,7 @@ namespace Pushy
             else temp.X = temp.X / (panel1.Height / Hohe) * (panel1.Height / Hohe);
             Console.WriteLine(temp.ToString());
             (sender as Control).Location = temp;
-            cBoxIsKnopfMauer.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
+            trackBar1.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
             // MessageBox.Show((((sender as Control).Tag + "").Split('.')[0] ) + "");
             if (ASender != null)
             {
@@ -79,12 +79,26 @@ namespace Pushy
                     case "gelb": cBoxFarbe.SelectedIndex = 3; break;
                 }
             }
-            else if (((sender as Control).Tag + "").Split('.')[0] == "Teleporter"|| ((sender as Control).Tag + "").Split('.')[0] == "Knopf")
+            else if (((sender as Control).Tag + "").Split('.')[0] == "Teleporter")
             {
                 numIndex.Maximum = 30;
                 numIndex.Minimum = 0;
                 numIndex.Visible = true;
                 numIndex.Value = Convert.ToInt32(((sender as Control).Tag + "").Split('.')[1]);
+            }
+            else if ( ((sender as Control).Tag + "").Split('.')[0] == "Knopf")
+            {
+                numIndex.Maximum = 30;
+                numIndex.Minimum = 0;
+                numIndex.Visible = true;
+                numIndex.Value = Convert.ToInt32(((sender as Control).Tag + "").Split('.')[1]);
+                checkBox1.Visible = true;
+                checkBox1.Checked = false;
+            }
+            else if (((sender as Control).Tag + "").Split('.')[0] == "BombenKnopf")
+            {
+                checkBox1.Visible = true;
+                checkBox1.Checked = true;
             }
             else if (((sender as Control).Tag + "").Split('.')[0] == "KnopfMauer")
             {
@@ -92,13 +106,18 @@ namespace Pushy
                 numIndex.Minimum = 0;
                 numIndex.Visible = true;
                 numIndex.Value = Convert.ToInt32(((sender as Control).Tag + "").Split('.')[1]);
-                cBoxIsKnopfMauer.Visible = true;
-                cBoxIsKnopfMauer.Checked = true;
+                trackBar1.Visible = true;
+                trackBar1.Value = 1;
             }
             else if (((sender as Control).Tag + "") == "Mauer")
             {
-                cBoxIsKnopfMauer.Visible = true;
-                cBoxIsKnopfMauer.Checked = false;
+                trackBar1.Visible = true;
+                trackBar1.Value = 0;
+            }
+            else if (((sender as Control).Tag + "") == "BombenMauer")
+            {
+                trackBar1.Visible = true;
+                trackBar1.Value = 2;
             }
             else if ((sender as Control).Tag + "" == "Player2")
             {
@@ -193,24 +212,13 @@ namespace Pushy
                 case "Teleporter": temp.Image = Properties.Resources.Teleporter; temp.Tag += ".1"; break;
                 case "Player": temp.Image = Properties.Resources.Player; break;
                 case "Farbklecks": temp.Image = Properties.Resources.Flarbklecks_rot; temp.Tag += ".rot"; break;
+                case "Bombe": temp.Image = Properties.Resources.Flarbklecks_blau; break;
+                case "Loch": temp.Image = Properties.Resources.Flarbklecks_blau; break;
             }
             panel1.Controls.Add(temp);
             Console.WriteLine(temp.Tag);
         }
 
-        private void cBoxIsKnopfMauer_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cBoxIsKnopfMauer.Checked)
-            {
-                Sender.Tag = "KnopfMauer." + ((int)numIndex.Value);
-                numIndex.Visible = true;
-            }
-            else
-            {
-                Sender.Tag = "Mauer";
-                numIndex.Visible = false;
-            }
-        }
 
         private void numIndex_ValueChanged(object sender, EventArgs e)
         {
@@ -237,7 +245,7 @@ namespace Pushy
                 ASender.BackgroundImage = Properties.Resources.Boden;
             }
             ASender = null;
-            cBoxIsKnopfMauer.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
+            trackBar1.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -246,7 +254,7 @@ namespace Pushy
             Sender.Dispose();
             Sender = null;
             ASender = null;
-            cBoxIsKnopfMauer.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
+            trackBar1.Visible = cBoxFarbe.Visible = numIndex.Visible = false;
 
         }
 
@@ -337,6 +345,34 @@ namespace Pushy
                 File.WriteAllLines(saveFileDialog1.FileName, speicher.GetText(Level));
             }
             }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            switch (trackBar1.Value)
+            {
+                case 0: Sender.Tag = "Mauer"; numIndex.Visible = false; break;
+                case 1: Sender.Tag = "KnopfMauer"; numIndex.Visible = true; break;
+                case 2: Sender.Tag = "BoombenMauer"; numIndex.Visible = false; break;
+
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                Sender.Tag = "BombenKnopf";
+                numIndex.Visible = false;
+            }
+            else
+            {
+                Sender.Tag = "Knopf.1";
+                numIndex.Visible = true;
+                numIndex.Value = 1;
+                numIndex.Maximum = 30;
+                numIndex.Minimum = 0;
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
