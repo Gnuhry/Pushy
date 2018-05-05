@@ -76,14 +76,15 @@ namespace Pushy
                 {
                     Tag = controlCollections[Levelindex][f + 1].Split(',')[0],
                     Location = new Point(Convert.ToInt32(controlCollections[Levelindex][f + 1].Split(',')[1].Split(';')[0]) * size.Height, Convert.ToInt32(controlCollections[Levelindex][f + 1].Split(',')[1].Split(';')[1]) * size.Width),
-                    Size = size,
+                    Size = new Size(size.Height,size.Width),
                     SizeMode = PictureBoxSizeMode.Zoom,
                     BackgroundImage = Properties.Resources.Boden
                 };
                 switch (controlCollections[Levelindex][f+1].Split(',')[0].Split('.')[0]) //Grafiken hinzufügen
                 {
-                    case "Mauer": (erg[f] as PictureBox).Image = Properties.Resources.Mauer; erg[f].BackColor = Color.Red; break;
-                    case "Kasten": (erg[f] as PictureBox).Image = Properties.Resources.Kasten; erg[f].BackColor = Color.Gray; break;
+                    case "Mauer": (erg[f] as PictureBox).Image = Properties.Resources.Mauer;  break;
+                    case "KnopfMauer": (erg[f] as PictureBox).Image = Properties.Resources.Mauer;  break;
+                    case "Kasten": (erg[f] as PictureBox).Image = Properties.Resources.Kasten;  break;
                     case "Kugel":
                         switch(controlCollections[Levelindex][f + 1].Split(',')[0].Split('.')[1])
                         {

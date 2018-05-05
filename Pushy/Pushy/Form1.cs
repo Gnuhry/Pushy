@@ -52,7 +52,8 @@ namespace Pushy
         {
             openFileDialog1.Filter = "Text Datei|*.txt";
             openFileDialog1.Title = "Text Datei öffnen";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            DialogResult temp= openFileDialog1.ShowDialog();
+            if (temp == DialogResult.OK||temp==DialogResult.Yes)
             {
                 try
                 {
@@ -66,7 +67,7 @@ namespace Pushy
             }
             Temp_FormClosed(null, null);
             comBox.SelectedIndex = comBox.Items.Count - 2;
-
+            speicher.speichern(Directory.GetCurrentDirectory() + @"\Datenbank.txt");
         }
     }
 }

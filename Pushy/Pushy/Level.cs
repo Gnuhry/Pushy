@@ -12,30 +12,36 @@ namespace Pushy
         Speicher speicher;
         int level;
         Timer timer;
+        Control[] DefaultContol;
         public Level(Speicher speicher,int Level)
         {
+            Player = Player2 = null;
             timer = new Timer();
             InitializeComponent();
             this.speicher = speicher;
             level = Level;
             Control[] Controls = speicher.GetControls(Level, new Size( panel1.Width / speicher.GetBreite(Level), panel1.Height / speicher.GetHohe(Level)));
-            for (int f = 0; f < Controls.Length; f++)
+            DefaultContol = Controls;
+            /*for (int f = 0; f < Controls.Length; f++)
             {
                 panel1.Controls.Add(Controls[f]);
-            }
-            KeyDown += Form1_KeyDown;
+            }*/
+            panel1.Controls.AddRange(Controls);
             for (int f = 0; f <panel1.Controls.Count; f++)
             {
                 if (panel1.Controls[f].Tag + "" == "Player")
-                    Player = panel1.Controls[f];
+                    Player = panel1.Controls[f];               
                 else if (panel1.Controls[f].Tag + "" == "Player2")
                     Player2 = panel1.Controls[f];
-                if ((panel1.Controls[f].Tag + "").Split('.')[0] == "KnopfMauer")
+                else if ((panel1.Controls[f].Tag + "").Split('.')[0] == "KnopfMauer")
                     panel1.Controls[f].EnabledChanged += KnopfMauer_EnabledChanged;
+                //if (panel1.Controls[f].Tag + "" == "Player"|| panel1.Controls[f].Tag + "" == "Player2"||panel1.Controls[f].Tag + "" == "Kasten"||(panel1.Controls[f].Tag + "").Split('.')[0] == "Kugel")
+                  //  panel1.Controls[f].BringToFront();
             }
             Hoch = Player.Height;
             Seite = Player.Width;
             IsBarrier = false;
+            KeyDown += Form1_KeyDown;
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             timer.Start();
@@ -84,36 +90,69 @@ namespace Pushy
         }
         private void KnopfMauer_EnabledChanged(object sender, EventArgs e)
         {
-            if ((sender as Control).Enabled) (sender as Control).BackColor = Color.Red;
-            else (sender as Control).BackColor = Color.Blue;
+            if ((sender as Control).Enabled) (sender as PictureBox).Image = Properties.Resources.Mauer;
+            else (sender as PictureBox).Image = Properties.Resources.Boden;
         }
 
 
-        private void Win()
-        {
+        private void Win(Point PlayerLocation,bool IsPlayer1)
+        { 
             for (int f = 0; f < panel1.Controls.Count; f++)
             {
                 if (panel1.Controls[f].Enabled && panel1.Controls[f].Visible)
                 {
-                    if (("" + panel1.Controls[f].Tag).Split('.')[0] == "Kugel") return;
-                    if ("" + panel1.Controls[f].Tag == "Haus")
+                    if (("" + panel1.Controls[f].Tag).Split('.')[0] == "Kugel") { Console.WriteLine("Kugel fehlt noch"); return; }
+                    if ("" + panel1.Controls[f].Tag == "Haus"&&Player2!=null&&IsPlayer1)
+                    {
+                        if ((PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                           panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
+                           PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                           panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)) { }
+                        else
+                        {
+                            Console.WriteLine(Player.Location.ToString() + "," + panel1.Controls[f].Location.ToString());
+                            Console.WriteLine("Player 1 nicht im Haus");
+                            return;
+                        }
+                    }
+                    if ("" + panel1.Controls[f].Tag == "Haus" && Player2 != null && !IsPlayer1)
                     {
                         if ((Player.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
                            panel1.Controls[f].Location.X < Player.Location.X + Player.Size.Width &&
                            Player.Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
-                           panel1.Controls[f].Location.Y < Player.Location.Y + Player.Size.Height)) {  }
+                           panel1.Controls[f].Location.Y < Player.Location.Y + Player.Size.Height)) { }
                         else
-  
+                        {
+                            Console.WriteLine(Player.Location.ToString() + "," + panel1.Controls[f].Location.ToString());
+                            Console.WriteLine("Player 1 nicht im Haus");
                             return;
+                        }
                     }
-                    if ("" + panel1.Controls[f].Tag == "Haus2")
+                    if ("" + panel1.Controls[f].Tag == "Haus2" && Player2 != null && IsPlayer1)
                     {
-                        if (!(Player2.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                        if ((Player2.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
                            panel1.Controls[f].Location.X < Player2.Location.X + Player2.Size.Width &&
                            Player2.Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
                            panel1.Controls[f].Location.Y < Player2.Location.Y + Player2.Size.Height)) { }
                         else
+                        {
+                            Console.WriteLine(Player2.Location.ToString() + "," + panel1.Controls[f].Location.ToString());
+                            Console.WriteLine("Player 2 nicht im Haus");
                             return;
+                        }
+                    }
+                    if ("" + panel1.Controls[f].Tag == "Haus2" && Player2 != null&&!IsPlayer1)
+                    {
+                        if ((PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                           panel1.Controls[f].Location.X < PlayerLocation.X + Player2.Size.Width &&
+                           PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                           panel1.Controls[f].Location.Y < PlayerLocation.Y + Player2.Size.Height)) { }
+                        else
+                        {
+                            Console.WriteLine(Player2.Location.ToString() + "," + panel1.Controls[f].Location.ToString());
+                            Console.WriteLine("Player 2 nicht im Haus");
+                            return;
+                        }
                     }
                 }
 
@@ -168,7 +207,7 @@ namespace Pushy
                         {
                             Console.WriteLine("Haus");
                             if (!IsPlayer) return false;
-                            Win();
+                            Win(PlayerLocation,Player==this.Player);
                             return true;
                         }
                     }
@@ -179,13 +218,96 @@ namespace Pushy
                        PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
                        panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
                         {
-                            Console.WriteLine("Teleporter");
-                            if (!IsPlayer) return false;
-                            for (int g = 0; g < panel1.Controls.Count; g++)
-                                if (panel1.Controls[g].Tag == panel1.Controls[f].Tag && panel1.Controls[g] != panel1.Controls[f])
-                                    Player.Location = panel1.Controls[g].Location;
-                            return false;
-                        }
+                            for (int i = 0; i < panel1.Controls.Count; i++)
+                            {
+                                if (i != f)
+                                    if (("" + panel1.Controls[i].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[i].Tag) == "Kasten")
+                                    {
+                                        if (panel1.Controls[i].Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                         panel1.Controls[f].Location.X < panel1.Controls[i].Location.X + panel1.Controls[i].Size.Width &&
+                         panel1.Controls[i].Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                         panel1.Controls[f].Location.Y < panel1.Controls[i].Location.Y + panel1.Controls[f].Size.Height)
+                                        {
+                                            if (!IsPlayer) { MessageBox.Show("Ni"); return false; }
+                                            else
+                                            {
+                                                Point point = panel1.Controls[i].Location;
+                                                point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
+                                                if (Uberprufung(point, false, panel1.Controls[i]))
+                                                {
+                                                    panel1.Controls[i].Location = point;
+                                                }
+                                                else { Uberprufung(PlayerLocation, true, Player); MessageBox.Show("Nope"); return false; }
+                                            }
+                                        }
+                                    }
+                            }
+                                for(int g = 0; g < panel1.Controls.Count; g++) //Suche nach anderem Teleporter
+                                {
+                                    if (panel1.Controls[f].Tag + "" == panel1.Controls[g].Tag + "" && f != g)
+                                    {
+                                        for(int h = 0; h < Controls.Count; h++)
+                                        {
+                                            if (h != g)
+                                                if (("" + panel1.Controls[h].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[h].Tag) == "Kasten"|| panel1.Controls[h]==this.Player|| panel1.Controls[h]==Player2)
+                                                {
+                                                    if (panel1.Controls[h].Location.X < panel1.Controls[g].Location.X + panel1.Controls[g].Width &
+                                     panel1.Controls[g].Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Size.Width &&
+                                     panel1.Controls[h].Location.Y < panel1.Controls[g].Location.Y + panel1.Controls[g].Height &&
+                                     panel1.Controls[g].Location.Y < panel1.Controls[h].Location.Y + panel1.Controls[h].Size.Height)
+                                                { MessageBox.Show("Yo"); return true; }
+                                                }
+                                        }
+                                    MessageBox.Show("Yep");
+                                        Player.Location = panel1.Controls[g].Location;
+                                    panel1.Controls[g].SendToBack();
+                                        return false;
+                                    }
+                                }
+                            
+
+                                        //       if(IsPlayer)
+                                        //       for(int i = 0; i < panel1.Controls.Count; i++)
+                                        //       {
+                                        //           if(("" + panel1.Controls[i].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[i].Tag) == "Kasten")
+                                        //           {
+                                        //               if (panel1.Controls[i].Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                                        //panel1.Controls[f].Location.X < panel1.Controls[i].Location.X + panel1.Controls[i].Size.Width &&
+                                        //panel1.Controls[i].Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                                        //panel1.Controls[f].Location.Y < panel1.Controls[i].Location.Y + panel1.Controls[f].Size.Height)
+                                        //               {
+                                        //                   Point point = panel1.Controls[i].Location;
+                                        //                   point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
+                                        //                   if (Uberprufung(point, false, panel1.Controls[i]))
+                                        //                   {
+                                        //                       panel1.Controls[i].Location = point;
+                                        //                   }
+                                        //                   else { }
+                                        //               }
+                                        //           }
+                                        //       }
+                                        //       Console.WriteLine("Teleporter");
+                                        //       //if (!IsPlayer) return false;
+                                        //       for (int g = 0; g < panel1.Controls.Count; g++)
+                                        //       {
+                                        //           if (panel1.Controls[g].Tag+"" == panel1.Controls[f].Tag+"" && g != f)
+                                        //           {
+                                        //               for(int h = 0; h < panel1.Controls.Count; h++)
+                                        //               {
+                                        //                   if(h!=g)
+                                        //                   if (panel1.Controls[g].Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Size.Width &
+                                        // panel1.Controls[h].Location.X < panel1.Controls[g].Location.X + panel1.Controls[g].Size.Width &&
+                                        // panel1.Controls[g].Location.Y < panel1.Controls[h].Location.Y + panel1.Controls[h].Size.Height &&
+                                        // panel1.Controls[h].Location.Y < panel1.Controls[g].Location.Y + panel1.Controls[g].Size.Height) { Console.WriteLine("Teleporter blockiert"); return true; }
+                                        //               }
+                                        //               Console.WriteLine("Energie"+ panel1.Controls[g].Location.ToString());
+                                        //               Player.Location = panel1.Controls[g].Location;
+                                        //               Player.BringToFront();
+                                        //           }
+                                        //       }
+                                        //       if (!IsPlayer) return true;
+                                        //       return false;
+                                    }
                     }
                     else if ("" + panel1.Controls[f].Tag == "Kasten")
                     {
@@ -213,6 +335,9 @@ namespace Pushy
                                 }
                                 return true;
                             }
+                            Uberprufung(this.Player.Location, true, this.Player);
+                            if (Player2 != null)
+                                Uberprufung(Player2.Location, true, this.Player2);
                             return false;
                         }
                     }
@@ -231,7 +356,7 @@ namespace Pushy
                             if (Uberprufung(point, false, panel1.Controls[f]))
                             {
                                 panel1.Controls[f].Location = point;
-                                KugelVersenkt(("" + panel1.Controls[f].Tag).Split('.')[1], panel1.Controls[f]);
+                                //KugelVersenkt(("" + panel1.Controls[f].Tag).Split('.')[1], panel1.Controls[f]);
                                 if (IsBarrier && IsPlayer)
                                 {
                                     PictureBox bar = new PictureBox();
@@ -269,7 +394,7 @@ namespace Pushy
                             Console.WriteLine("Knopf");
                             for (int g = 0; g < panel1.Controls.Count; g++)
                                 if ("" + panel1.Controls[g].Tag == "KnopfMauer." + ("" + panel1.Controls[f].Tag).Split('.')[1])
-                                {//vllt Grafik ändern
+                                {
                                     panel1.Controls[g].Enabled = false;
                                     panel1.Controls[f].Enabled = false;
                                 }
@@ -289,14 +414,53 @@ namespace Pushy
                             return true;
                         }
                     }
-                    else if (("" + panel1.Controls[f].Tag).Split('.')[0] == "KugelZiel" || ("" + panel1.Controls[f].Tag).Split('.')[0] == "Farbklecks")
+                    else if (("" + panel1.Controls[f].Tag).Split('.')[0] == "KugelZiel" )
                     {
                         if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
                        panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
                        PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
                        panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
                         {
-                            Console.WriteLine("KugelZiel/Farbklecks");
+                            Console.WriteLine("KugelZiel");
+                            if (Player.Tag + "" != "Kasten" && !IsPlayer)
+                            {
+                                if ("KugelZiel." + (Player.Tag + "").Split('.')[1] == panel1.Controls[f].Tag+"")
+                                {
+                                    if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                 panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
+                 PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                 panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height) { Player.Dispose(); }
+                                }
+                            }
+                            return true;
+                        }
+                    }
+                    else if ( ("" + panel1.Controls[f].Tag).Split('.')[0] == "Farbklecks")
+                    {
+                        if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                       panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
+                       PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                       panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
+                        {
+                            Console.WriteLine("Farbklecks");
+                            if (Player.Tag + "" != "Kasten" && !IsPlayer)
+                            {
+                                if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
+                PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
+                                {
+                                    Player.Tag = "Kugel." + ("" + panel1.Controls[f].Tag).Split('.')[1];
+                                    switch (("" + panel1.Controls[f].Tag).Split('.')[1])
+                                    {
+                                        case "blau": (Player as PictureBox).Image = Properties.Resources.Kugel_blau; break;
+                                        case "rot": (Player as PictureBox).Image = Properties.Resources.Kugel_rot; break;
+                                        case "gruen": (Player as PictureBox).Image = Properties.Resources.Kugel_gruen; break;
+                                        case "gelb": (Player as PictureBox).Image = Properties.Resources.Kugel_gelb; break;
+                                    }
+                                    panel1.Controls[f].Visible = false;
+                                }
+                            }
                             return true;
                         }
                     }
@@ -364,12 +528,15 @@ namespace Pushy
 
         private void pcBReset_Click(object sender, EventArgs e)
         {
+            KeyDown -= Form1_KeyDown;
             panel1.Controls.Clear();
-            Control[] Controls = speicher.GetControls(level, new Size(panel1.Height / speicher.GetHohe(level), panel1.Width / speicher.GetBreite(level)));
-            for (int f = 0; f < Controls.Length; f++)
+            // Control[] Controls = speicher.GetControls(level, new Size(panel1.Height / speicher.GetHohe(level), panel1.Width / speicher.GetBreite(level)));
+            /*for (int f = 0; f < Controls.Length; f++)
             {
                 panel1.Controls.Add(Controls[f]);
-            }
+            }*/
+            panel1.Controls.AddRange(speicher.GetControls(level, new Size(panel1.Height / speicher.GetHohe(level), panel1.Width / speicher.GetBreite(level))));
+            //panel1.Controls.AddRange(DefaultContol);
             for (int f = 0; f < panel1.Controls.Count; f++)
             {
                 if (panel1.Controls[f].Tag + "" == "Player")
@@ -383,13 +550,7 @@ namespace Pushy
             Seite = Player.Width;
             IsBarrier = false;
             label1.Text = "0";
-        }
-
-        private void Level_Resize(object sender, EventArgs e)
-        {
-            /*Console.WriteLine(Convert.ToInt32(panel1.MinimumSize.Width * (Convert.ToDouble(Width) / MinimumSize.Width))+","+ Convert.ToInt32(panel1.MinimumSize.Height * (Convert.ToDouble(Height) / MinimumSize.Height)));
-            panel1.Size = new Size(Convert.ToInt32(panel1.MinimumSize.Width * (Convert.ToDouble(Width) / MinimumSize.Width)) ,Convert.ToInt32(panel1.MinimumSize.Height * (Convert.ToDouble(Height) / MinimumSize.Height)));
-            pcBReset_Click(null,null);*/
+            KeyDown += Form1_KeyDown;
         }
 
         private void Level_SizeChanged(object sender, EventArgs e)
@@ -404,35 +565,35 @@ namespace Pushy
             timer.Stop();
         }
 
-        private void KugelVersenkt(string Farbe, Control Kugel)
-        {
-            for (int f = 0; f < panel1.Controls.Count; f++)
-            {
-                if (("" + panel1.Controls[f].Tag) == ("KugelZiel." + Farbe))
-                {
-                    if (Kugel.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
-                  panel1.Controls[f].Location.X < Kugel.Location.X + Kugel.Size.Width &&
-                  Kugel.Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
-                  panel1.Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height) { Kugel.Dispose(); return; }
-                }
-                else if (("" + panel1.Controls[f].Tag).Split('.')[0] == "Farbklecks")
-                    if (Kugel.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
-                  panel1.Controls[f].Location.X < Kugel.Location.X + Kugel.Size.Width &&
-                  Kugel.Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
-                  panel1.Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height)
-                    {
-                        Kugel.Tag = "Kugel." + ("" + panel1.Controls[f].Tag).Split('.')[1];
-                        switch(("" + panel1.Controls[f].Tag).Split('.')[1])
-                        {
-                             case "blau": (Kugel as PictureBox).Image = Properties.Resources.Kugel_blau; break;
-                            case "rot": (Kugel as PictureBox).Image = Properties.Resources.Kugel_rot; break;
-                            case "gruen": (Kugel as PictureBox).Image = Properties.Resources.Kugel_gruen; break;
-                            case "gelb": (Kugel as PictureBox).Image = Properties.Resources.Kugel_gelb; break;
-                        }
-                        panel1.Controls[f].Visible = false;
-                        return;
-                    }
-            }
-        }
+        //private void KugelVersenkt(string Farbe, Control Kugel)
+        //{
+        //    for (int f = 0; f < panel1.Controls.Count; f++)
+        //    {
+        //        if (("" + panel1.Controls[f].Tag) == ("KugelZiel." + Farbe))
+        //        {
+        //            if (Kugel.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+        //          panel1.Controls[f].Location.X < Kugel.Location.X + Kugel.Size.Width &&
+        //          Kugel.Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+        //          panel1.Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height) { Kugel.Dispose(); return; }
+        //        }
+        //        else if (("" + panel1.Controls[f].Tag).Split('.')[0] == "Farbklecks")
+        //            if (Kugel.Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+        //          panel1.Controls[f].Location.X < Kugel.Location.X + Kugel.Size.Width &&
+        //          Kugel.Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+        //          panel1.Controls[f].Location.Y < Kugel.Location.Y + Kugel.Size.Height)
+        //            {
+        //                Kugel.Tag = "Kugel." + ("" + panel1.Controls[f].Tag).Split('.')[1];
+        //                switch(("" + panel1.Controls[f].Tag).Split('.')[1])
+        //                {
+        //                     case "blau": (Kugel as PictureBox).Image = Properties.Resources.Kugel_blau; break;
+        //                    case "rot": (Kugel as PictureBox).Image = Properties.Resources.Kugel_rot; break;
+        //                    case "gruen": (Kugel as PictureBox).Image = Properties.Resources.Kugel_gruen; break;
+        //                    case "gelb": (Kugel as PictureBox).Image = Properties.Resources.Kugel_gelb; break;
+        //                }
+        //                panel1.Controls[f].Visible = false;
+        //                return;
+        //            }
+        //    }
+        //}
     }
 }

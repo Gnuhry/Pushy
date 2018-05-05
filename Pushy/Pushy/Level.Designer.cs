@@ -131,7 +131,6 @@
             this.Text = "Level";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level_FormClosing);
             this.SizeChanged += new System.EventHandler(this.Level_SizeChanged);
-            this.Resize += new System.EventHandler(this.Level_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).EndInit();
             this.ResumeLayout(false);
