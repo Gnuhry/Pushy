@@ -13,8 +13,10 @@ namespace Pushy
         int level;
         Timer timer;
         Control[] DefaultContol;
+        bool teleport,tp;
         public Level(Speicher speicher,int Level)
         {
+            teleport = tp = false;
             Player = Player2 = null;
             timer = new Timer();
             InitializeComponent();
@@ -78,6 +80,12 @@ namespace Pushy
                     Player.Location = temp;
                     Knopf_Aktiv();
                 }
+                if (teleport)
+                {
+                    Console.WriteLine("ZWEITES");
+                    Uberprufung(Player.Location, true, Player);
+                    teleport = false;
+                }
             }
             else if(Player1==2)
             {
@@ -85,6 +93,12 @@ namespace Pushy
                 {
                     Player2.Location = temp;
                     Knopf_Aktiv();
+                }
+                if (teleport)
+                {
+                    Console.WriteLine("ZWEITES");
+                    Uberprufung(Player2.Location, true, Player2);
+                    teleport = false;
                 }
             }
         }
@@ -165,6 +179,7 @@ namespace Pushy
         }
         private bool Uberprufung(Point PlayerLocation, bool IsPlayer, Control Player)
         {
+            Console.WriteLine("----------\n"+Player.Tag);
             if (Player2 != null)
             {
                 if (Player == this.Player||!IsPlayer)
@@ -218,6 +233,7 @@ namespace Pushy
                        PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
                        panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
                         {
+                            Console.WriteLine("Teleporter");
                             for (int i = 0; i < panel1.Controls.Count; i++)
                             {
                                 if (i != f)
@@ -228,7 +244,7 @@ namespace Pushy
                          panel1.Controls[i].Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
                          panel1.Controls[f].Location.Y < panel1.Controls[i].Location.Y + panel1.Controls[f].Size.Height)
                                         {
-                                            if (!IsPlayer) { MessageBox.Show("Ni"); return false; }
+                                            if (!IsPlayer) { Console.WriteLine("Geblockt, Kugel auf Teleporter"); return false; }
                                             else
                                             {
                                                 Point point = panel1.Controls[i].Location;
@@ -237,7 +253,7 @@ namespace Pushy
                                                 {
                                                     panel1.Controls[i].Location = point;
                                                 }
-                                                else { Uberprufung(PlayerLocation, true, Player); MessageBox.Show("Nope"); return false; }
+                                                else { Console.WriteLine("Kugel/Kasten kann sich nicht bewegen"); return false; }
                                             }
                                         }
                                     }
@@ -246,7 +262,7 @@ namespace Pushy
                                 {
                                     if (panel1.Controls[f].Tag + "" == panel1.Controls[g].Tag + "" && f != g)
                                     {
-                                        for(int h = 0; h < Controls.Count; h++)
+                                        for(int h = 0; h < panel1.Controls.Count; h++)
                                         {
                                             if (h != g)
                                                 if (("" + panel1.Controls[h].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[h].Tag) == "Kasten"|| panel1.Controls[h]==this.Player|| panel1.Controls[h]==Player2)
@@ -255,59 +271,18 @@ namespace Pushy
                                      panel1.Controls[g].Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Size.Width &&
                                      panel1.Controls[h].Location.Y < panel1.Controls[g].Location.Y + panel1.Controls[g].Height &&
                                      panel1.Controls[g].Location.Y < panel1.Controls[h].Location.Y + panel1.Controls[h].Size.Height)
-                                                { MessageBox.Show("Yo"); return true; }
+                                                {Console.WriteLine("Geblockter Ziel-Teleporter"); return true; }
                                                 }
                                         }
-                                    MessageBox.Show("Yep");
+                                    Console.WriteLine("Teleportieren-ENERGIE");
+                                    if (!IsPlayer) teleport = true; 
                                         Player.Location = panel1.Controls[g].Location;
+                                    tp = true;
                                     panel1.Controls[g].SendToBack();
                                         return false;
                                     }
                                 }
-                            
-
-                                        //       if(IsPlayer)
-                                        //       for(int i = 0; i < panel1.Controls.Count; i++)
-                                        //       {
-                                        //           if(("" + panel1.Controls[i].Tag).Split('.')[0] == "Kugel" || ("" + panel1.Controls[i].Tag) == "Kasten")
-                                        //           {
-                                        //               if (panel1.Controls[i].Location.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
-                                        //panel1.Controls[f].Location.X < panel1.Controls[i].Location.X + panel1.Controls[i].Size.Width &&
-                                        //panel1.Controls[i].Location.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
-                                        //panel1.Controls[f].Location.Y < panel1.Controls[i].Location.Y + panel1.Controls[f].Size.Height)
-                                        //               {
-                                        //                   Point point = panel1.Controls[i].Location;
-                                        //                   point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
-                                        //                   if (Uberprufung(point, false, panel1.Controls[i]))
-                                        //                   {
-                                        //                       panel1.Controls[i].Location = point;
-                                        //                   }
-                                        //                   else { }
-                                        //               }
-                                        //           }
-                                        //       }
-                                        //       Console.WriteLine("Teleporter");
-                                        //       //if (!IsPlayer) return false;
-                                        //       for (int g = 0; g < panel1.Controls.Count; g++)
-                                        //       {
-                                        //           if (panel1.Controls[g].Tag+"" == panel1.Controls[f].Tag+"" && g != f)
-                                        //           {
-                                        //               for(int h = 0; h < panel1.Controls.Count; h++)
-                                        //               {
-                                        //                   if(h!=g)
-                                        //                   if (panel1.Controls[g].Location.X < panel1.Controls[h].Location.X + panel1.Controls[h].Size.Width &
-                                        // panel1.Controls[h].Location.X < panel1.Controls[g].Location.X + panel1.Controls[g].Size.Width &&
-                                        // panel1.Controls[g].Location.Y < panel1.Controls[h].Location.Y + panel1.Controls[h].Size.Height &&
-                                        // panel1.Controls[h].Location.Y < panel1.Controls[g].Location.Y + panel1.Controls[g].Size.Height) { Console.WriteLine("Teleporter blockiert"); return true; }
-                                        //               }
-                                        //               Console.WriteLine("Energie"+ panel1.Controls[g].Location.ToString());
-                                        //               Player.Location = panel1.Controls[g].Location;
-                                        //               Player.BringToFront();
-                                        //           }
-                                        //       }
-                                        //       if (!IsPlayer) return true;
-                                        //       return false;
-                                    }
+                        }
                     }
                     else if ("" + panel1.Controls[f].Tag == "Kasten")
                     {
@@ -333,11 +308,23 @@ namespace Pushy
                                     bar.Tag = "Barrier";
                                     panel1.Controls.Add(bar);
                                 }
+                                teleport = true;
                                 return true;
                             }
-                            Uberprufung(this.Player.Location, true, this.Player);
-                            if (Player2 != null)
-                                Uberprufung(Player2.Location, true, this.Player2);
+                            if (tp)
+                            {
+                                if (IsBarrier && IsPlayer)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                tp = false;
+                                return true;
+                            }
                             return false;
                         }
                     }
@@ -366,6 +353,21 @@ namespace Pushy
                                     bar.Tag = "Barrier";
                                     panel1.Controls.Add(bar);
                                 }
+                                teleport = true;
+                                return true;
+                            }
+                            if (tp)
+                            {
+                                if (IsBarrier && IsPlayer)
+                                {
+                                    PictureBox bar = new PictureBox();
+                                    bar.Size = Player.Size;
+                                    bar.Location = PlayerLocation;
+                                    bar.BackColor = Color.Green;
+                                    bar.Tag = "Barrier";
+                                    panel1.Controls.Add(bar);
+                                }
+                                tp = false;
                                 return true;
                             }
                             return false;
