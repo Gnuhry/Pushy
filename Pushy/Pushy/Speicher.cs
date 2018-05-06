@@ -86,9 +86,9 @@ namespace Pushy
                     case "KnopfMauer": (erg[f] as PictureBox).Image = Properties.Resources.Mauer;  break;
                     case "BombenMauer": (erg[f] as PictureBox).Image = Properties.Resources.Mauer; break;
                     case "BombenKnopf": (erg[f] as PictureBox).Image = Properties.Resources.Knopf; break;
-                    case "Bombe": (erg[f] as PictureBox).Image = Properties.Resources.Flarbklecks_blau; break;
-                    case "Eis": (erg[f] as PictureBox).Image = Properties.Resources.Flarbklecks_blau; break;
-                    case "Loch": (erg[f] as PictureBox).Image = Properties.Resources.Flarbklecks_blau; break;
+                    case "Bombe": (erg[f] as PictureBox).Image = Properties.Resources.Bombe; break;
+                    case "Eis": (erg[f] as PictureBox).Image = Properties.Resources.Eis; break;
+                    case "Loch": (erg[f] as PictureBox).Image = Properties.Resources.Loch; break;
                     case "Kasten": (erg[f] as PictureBox).Image = Properties.Resources.Kasten;  break;
                     case "Kugel":
                         switch(controlCollections[Levelindex][f + 1].Split(',')[0].Split('.')[1])

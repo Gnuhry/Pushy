@@ -212,9 +212,9 @@ namespace Pushy
                 case "Teleporter": temp.Image = Properties.Resources.Teleporter; temp.Tag += ".1"; break;
                 case "Player": temp.Image = Properties.Resources.Player; break;
                 case "Farbklecks": temp.Image = Properties.Resources.Flarbklecks_rot; temp.Tag += ".rot"; break;
-                case "Bombe": temp.Image = Properties.Resources.Flarbklecks_blau; break;
-                case "Loch": temp.Image = Properties.Resources.Flarbklecks_blau; break;
-                case "Eis": temp.Image = Properties.Resources.Flarbklecks_blau; break;
+                case "Bombe": temp.Image = Properties.Resources.Bombe; break;
+                case "Loch": temp.Image = Properties.Resources.Loch; break;
+                case "Eis": temp.Image = Properties.Resources.Eis; break;
             }
             panel1.Controls.Add(temp);
             Console.WriteLine(temp.Tag);
