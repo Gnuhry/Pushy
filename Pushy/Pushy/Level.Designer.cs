@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Level));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.pcBReset = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).BeginInit();
@@ -40,48 +37,12 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::Pushy.Properties.Resources.Boden;
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Location = new System.Drawing.Point(32, 29);
             this.panel1.MinimumSize = new System.Drawing.Size(400, 400);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 400);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2.BackgroundImage = global::Pushy.Properties.Resources.Mauer;
-            this.panel2.Location = new System.Drawing.Point(12, 29);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(20, 400);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel3.BackgroundImage = global::Pushy.Properties.Resources.Mauer;
-            this.panel3.Location = new System.Drawing.Point(432, 29);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(20, 400);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel4.BackgroundImage = global::Pushy.Properties.Resources.Mauer;
-            this.panel4.Location = new System.Drawing.Point(12, 429);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(440, 20);
-            this.panel4.TabIndex = 3;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel5.BackgroundImage = global::Pushy.Properties.Resources.Mauer;
-            this.panel5.Location = new System.Drawing.Point(12, 12);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(440, 20);
-            this.panel5.TabIndex = 4;
             // 
             // pcBReset
             // 
@@ -109,10 +70,6 @@
             this.ClientSize = new System.Drawing.Size(642, 459);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pcBReset);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(658, 498);
             this.Name = "Level";
@@ -129,10 +86,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pcBReset;
         private System.Windows.Forms.Label label1;
     }

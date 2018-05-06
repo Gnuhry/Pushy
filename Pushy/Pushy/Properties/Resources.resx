@@ -157,9 +157,6 @@
   <data name="Kugel_rot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PushyBallRot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mauer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MauerwerkPuschy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Player" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pushy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -198,5 +195,8 @@
   </data>
   <data name="Boden" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PuschyBoden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mauer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MauerwerkPuschy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -127,9 +127,6 @@
     <None Include="Resources\Pushy.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MauerwerkPuschy.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\PushyFarbzielBlau.png" />
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Bombenknopf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MauerwerkPuschy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
