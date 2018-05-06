@@ -55,7 +55,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::Pushy.Properties.Resources.PuschyBoden;
+            this.panel1.BackgroundImage = global::Pushy.Properties.Resources.Boden;
             this.panel1.Location = new System.Drawing.Point(32, 29);
             this.panel1.MinimumSize = new System.Drawing.Size(400, 400);
             this.panel1.Name = "panel1";

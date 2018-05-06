@@ -160,9 +160,6 @@
   <data name="Kasten" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kasten.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Boden" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PuschyBoden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Bombenknopf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bombenknopf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -199,7 +196,7 @@
   <data name="Haus2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Haus2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PuschyBoden" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PuschyBoden1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Boden" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Boden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
