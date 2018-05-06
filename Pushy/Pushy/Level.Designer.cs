@@ -33,10 +33,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pcBReset = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,14 +83,6 @@
             this.panel5.Size = new System.Drawing.Size(440, 20);
             this.panel5.TabIndex = 4;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(482, 29);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // pcBReset
             // 
             this.pcBReset.BackColor = System.Drawing.Color.Silver;
@@ -119,7 +109,6 @@
             this.ClientSize = new System.Drawing.Size(642, 459);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pcBReset);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -131,7 +120,6 @@
             this.Text = "Level";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level_FormClosing);
             this.SizeChanged += new System.EventHandler(this.Level_SizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,7 +133,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pcBReset;
         private System.Windows.Forms.Label label1;
     }
