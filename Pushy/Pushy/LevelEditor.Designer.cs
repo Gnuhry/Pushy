@@ -74,6 +74,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackgroundImage = global::Pushy.Properties.Resources.Boden;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(175, 25);
             this.panel1.Name = "panel1";

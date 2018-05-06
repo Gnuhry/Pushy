@@ -28,21 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Level));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pcBReset = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pcBReset = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pcBReset)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // label1
             // 
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.Location = new System.Drawing.Point(32, 29);
-            this.panel1.MinimumSize = new System.Drawing.Size(400, 400);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 400);
-            this.panel1.TabIndex = 0;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(466, 429);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(13, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "0";
             // 
             // pcBReset
             // 
@@ -54,14 +53,14 @@
             this.pcBReset.TabStop = false;
             this.pcBReset.Click += new System.EventHandler(this.pcBReset_Click);
             // 
-            // label1
+            // panel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(466, 429);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "0";
+            this.panel1.BackgroundImage = global::Pushy.Properties.Resources.PuschyBoden;
+            this.panel1.Location = new System.Drawing.Point(32, 29);
+            this.panel1.MinimumSize = new System.Drawing.Size(400, 400);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(400, 400);
+            this.panel1.TabIndex = 0;
             // 
             // Level
             // 

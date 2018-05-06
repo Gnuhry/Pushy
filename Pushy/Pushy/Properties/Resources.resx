@@ -118,85 +118,88 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Flarbklecks_blau" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Flarbklecksblau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Flarbklecks_gelb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Flarbklecksgelb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Flarbklecks_gruen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Flarbklecksgreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Flarbklecks_rot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Flarbklecksrot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Knopf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Knopf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Kugelziel_gelb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PushyFarbzielGelb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Kugelziel_blau" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PushyFarbzielBlau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Kugelziel_gelb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PushyFarbzielGelb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Kugelziel_gruen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PushyFarbzielGrün.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Kugelziel_rot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PushyFarbzielRot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Kugel_blau" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PushyBallBlau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Kugel_gelb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PushyBallGelb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Kugel_gruen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PushyKugelGrün.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Kugel_rot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PushyBallRot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Flarbklecks_rot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flarbklecksrot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Player" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pushy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Teleporter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\teleporter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Barier" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Barrier.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Haus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Haus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Haus2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Haus2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Player2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pushy2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Kasten" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Kasten.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Kugel_gelb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PushyBallGelb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Bombe" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bomb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bombenknopf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bombenknopf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Flarbklecks_gelb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flarbklecksgelb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="EinzelKachel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EinzelKachel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Eis" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\snowflake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Flarbklecks_gruen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flarbklecksgreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mauer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MauerwerkPuschy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Flarbklecks_blau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flarbklecksblau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Loch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hole.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Kugel_rot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PushyBallRot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kasten" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kasten.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Boden" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PuschyBoden.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mauer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MauerwerkPuschy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bombenknopf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bombenknopf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kugelziel_gruen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PushyFarbzielGrün.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Knopf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Knopf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bombe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bomb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Barier" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Barrier.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kugel_gruen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PushyKugelGrün.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Teleporter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\teleporter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Haus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Haus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kugelziel_rot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PushyFarbzielRot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Eis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\snowflake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kugel_blau" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PushyBallBlau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Haus2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Haus2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PuschyBoden" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PuschyBoden1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
