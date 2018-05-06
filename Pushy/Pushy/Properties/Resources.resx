@@ -133,9 +133,6 @@
   <data name="Flarbklecks_rot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flarbklecksrot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Kasten" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PushyKasten.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Knopf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Knopf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -183,5 +180,17 @@
   </data>
   <data name="Player2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pushy2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kasten" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kasten.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bombe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bomb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Eis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\snowflake.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Loch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hole.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

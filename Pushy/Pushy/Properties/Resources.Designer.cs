@@ -83,6 +83,26 @@ namespace Pushy.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bombe {
+            get {
+                object obj = ResourceManager.GetObject("Bombe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Eis {
+            get {
+                object obj = ResourceManager.GetObject("Eis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Flarbklecks_blau {
             get {
                 object obj = ResourceManager.GetObject("Flarbklecks_blau", resourceCulture);
@@ -236,6 +256,16 @@ namespace Pushy.Properties {
         internal static System.Drawing.Bitmap Kugelziel_rot {
             get {
                 object obj = ResourceManager.GetObject("Kugelziel_rot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Loch {
+            get {
+                object obj = ResourceManager.GetObject("Loch", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
