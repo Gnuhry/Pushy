@@ -214,6 +214,7 @@ namespace Pushy
                 case "Farbklecks": temp.Image = Properties.Resources.Flarbklecks_rot; temp.Tag += ".rot"; break;
                 case "Bombe": temp.Image = Properties.Resources.Flarbklecks_blau; break;
                 case "Loch": temp.Image = Properties.Resources.Flarbklecks_blau; break;
+                case "Eis": temp.Image = Properties.Resources.Flarbklecks_blau; break;
             }
             panel1.Controls.Add(temp);
             Console.WriteLine(temp.Tag);
@@ -270,7 +271,7 @@ namespace Pushy
                     case "Haus": HausC++; break;
                     case "Haus2": Haus2C++; break;
                 }
-                if ((panel1.Controls[f].Tag + "").Split('.')[0] != "Mauer")
+                if ((panel1.Controls[f].Tag + "").Split('.')[0] != "Mauer"|| (panel1.Controls[f].Tag + "").Split('.')[0] != "Eis"|| (panel1.Controls[f].Tag + "").Split('.')[0] != "Teleporter")
                 {
                     for(int g=0;g<panel1.Controls.Count;g++)
                         if (panel1.Controls[f].Location == panel1.Controls[g].Location&&panel1.Controls[f]!=panel1.Controls[g])

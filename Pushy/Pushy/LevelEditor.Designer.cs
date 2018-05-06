@@ -54,6 +54,7 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lbBombe = new System.Windows.Forms.Label();
             this.lbLoch = new System.Windows.Forms.Label();
+            this.lbEis = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHohe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBreite)).BeginInit();
@@ -332,7 +333,7 @@
             // lbBombe
             // 
             this.lbBombe.AutoSize = true;
-            this.lbBombe.Location = new System.Drawing.Point(38, 192);
+            this.lbBombe.Location = new System.Drawing.Point(42, 192);
             this.lbBombe.Name = "lbBombe";
             this.lbBombe.Size = new System.Drawing.Size(40, 13);
             this.lbBombe.TabIndex = 28;
@@ -342,18 +343,29 @@
             // lbLoch
             // 
             this.lbLoch.AutoSize = true;
-            this.lbLoch.Location = new System.Drawing.Point(35, 179);
+            this.lbLoch.Location = new System.Drawing.Point(44, 166);
             this.lbLoch.Name = "lbLoch";
             this.lbLoch.Size = new System.Drawing.Size(31, 13);
             this.lbLoch.TabIndex = 29;
             this.lbLoch.Text = "Loch";
             this.lbLoch.Click += new System.EventHandler(this.label_Click);
             // 
+            // lbEis
+            // 
+            this.lbEis.AutoSize = true;
+            this.lbEis.Location = new System.Drawing.Point(44, 140);
+            this.lbEis.Name = "lbEis";
+            this.lbEis.Size = new System.Drawing.Size(21, 13);
+            this.lbEis.TabIndex = 30;
+            this.lbEis.Text = "Eis";
+            this.lbEis.Click += new System.EventHandler(this.label_Click);
+            // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.lbEis);
             this.Controls.Add(this.lbLoch);
             this.Controls.Add(this.lbBombe);
             this.Controls.Add(this.checkBox1);
@@ -420,5 +432,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label lbBombe;
         private System.Windows.Forms.Label lbLoch;
+        private System.Windows.Forms.Label lbEis;
     }
 }

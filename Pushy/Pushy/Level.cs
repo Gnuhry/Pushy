@@ -8,13 +8,13 @@ namespace Pushy
     {
         Control Player,Player2;
         static int Hoch, Seite;
-        bool IsBarrier,IsBarrier2, teleport, tp;
+        bool IsBarrier,IsBarrier2, teleport, tp,IsEis;
         Speicher speicher;
         int level;
         Timer timer;
         public Level(Speicher speicher,int Level)
         {
-            teleport = tp = false;
+            teleport =IsEis= tp = false;
             Player = Player2 = null;
             timer = new Timer();
             InitializeComponent();
@@ -54,49 +54,57 @@ namespace Pushy
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             int Player1=0;
-            Point temp = Player.Location;
+            Point temp = Player.Location,Verschiebung=new Point();
             if (Player != null)
             {            
-                if (e.KeyData == Keys.Down) { temp.Offset(0, Player.Height); Player1 = 1; }
-                else if (e.KeyData == Keys.Up) { temp.Offset(0, -Player.Height); Player1 = 1; }
-                else if (e.KeyData == Keys.Right) { temp.Offset(Player.Width, 0); Player1 = 1; }
-                else if (e.KeyData == Keys.Left) { temp.Offset(-Player.Width, 0); Player1 = 1; }
+                if (e.KeyData == Keys.Down) { Verschiebung=new Point(0, Player.Height); Player1 = 1; }
+                else if (e.KeyData == Keys.Up) { Verschiebung = new Point(0, -Player.Height); Player1 = 1; }
+                else if (e.KeyData == Keys.Right) { Verschiebung = new Point(Player.Width, 0); Player1 = 1; }
+                else if (e.KeyData == Keys.Left) { Verschiebung = new Point(-Player.Width, 0); Player1 = 1; }
             }
             if (Player2 != null)
             {
-                if (e.KeyData == Keys.S) { temp = Player2.Location; temp.Offset(0, Player2.Height); Player1 = 2; }
-                else if (e.KeyData == Keys.W) { temp = Player2.Location; temp.Offset(0, -Player2.Height); Player1 = 2; }
-                else if (e.KeyData == Keys.D) { temp = Player2.Location; temp.Offset(Player2.Width, 0); Player1 = 2; }
-                else if (e.KeyData == Keys.A) { temp = Player2.Location; temp.Offset(-Player2.Width, 0); Player1 = 2; }
+                if (e.KeyData == Keys.S) { temp = Player2.Location; Verschiebung = new Point(0, Player2.Height); Player1 = 2; }
+                else if (e.KeyData == Keys.W) { temp = Player2.Location; Verschiebung = new Point(0, -Player2.Height); Player1 = 2; }
+                else if (e.KeyData == Keys.D) { temp = Player2.Location; Verschiebung = new Point(Player2.Width, 0); Player1 = 2; }
+                else if (e.KeyData == Keys.A) { temp = Player2.Location; Verschiebung = new Point(-Player2.Width, 0); Player1 = 2; }
             }
             if (Player1 == 0) return;
             if (Player1==1)
             {
-                if (Uberprufung(temp, true, Player))
+                do
                 {
-                    Player.Location = temp;
-                    Knopf_Aktiv();
-                }
-                if (teleport)
-                {
-                    Console.WriteLine("ZWEITES");
-                    Uberprufung(Player.Location, true, Player);
-                    teleport = false;
-                }
+                    temp.Offset(Verschiebung);
+                    if (Uberprufung(temp, true, Player))
+                    {
+                        Player.Location = temp;
+                        Knopf_Aktiv();
+                    }
+                    if (teleport)
+                    {
+                        Console.WriteLine("ZWEITES");
+                        Uberprufung(Player.Location, true, Player);
+                        teleport = false;
+                    }
+                } while (IsEis);
             }
             else if(Player1==2)
             {
-                if (Uberprufung(temp, true, Player2))
+                do
                 {
-                    Player2.Location = temp;
-                    Knopf_Aktiv();
-                }
-                if (teleport)
-                {
-                    Console.WriteLine("ZWEITES");
-                    Uberprufung(Player2.Location, true, Player2);
-                    teleport = false;
-                }
+                    temp.Offset(Verschiebung);
+                    if (Uberprufung(temp, true, Player2))
+                    {
+                        Player2.Location = temp;
+                        Knopf_Aktiv();
+                    }
+                    if (teleport)
+                    {
+                        Console.WriteLine("ZWEITES");
+                        Uberprufung(Player2.Location, true, Player2);
+                        teleport = false;
+                    }
+                }while(IsEis);
             }
         }
         private void KnopfMauer_EnabledChanged(object sender, EventArgs e)
@@ -176,6 +184,7 @@ namespace Pushy
         }
         private bool Uberprufung(Point PlayerLocation, bool IsPlayer, Control Player)
         {
+            IsEis = false;
             Console.WriteLine("----------\n"+Player.Tag);
             if (Player2 != null)
             {
@@ -210,7 +219,19 @@ namespace Pushy
                             return false;
                         }
                     }
-                    if ("" + panel1.Controls[f].Tag == "Loch")
+                    else if ("" + panel1.Controls[f].Tag == "Eis" )
+                    {
+                        if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
+                       panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
+                       PlayerLocation.Y < panel1.Controls[f].Location.Y + panel1.Controls[f].Height &&
+                       panel1.Controls[f].Location.Y < PlayerLocation.Y + Player.Size.Height)
+                        {
+                            Console.WriteLine("Eis");
+                            IsEis = true;
+                            return true;
+                        }
+                    }
+                    else if ("" + panel1.Controls[f].Tag == "Loch")
                     {
                         if (PlayerLocation.X < panel1.Controls[f].Location.X + panel1.Controls[f].Width &
                        panel1.Controls[f].Location.X < PlayerLocation.X + Player.Size.Width &&
@@ -321,12 +342,15 @@ namespace Pushy
                                             else
                                             {
                                                 Point point = panel1.Controls[i].Location;
-                                                point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
-                                                if (Uberprufung(point, false, panel1.Controls[i]))
+                                                do
                                                 {
-                                                    panel1.Controls[i].Location = point;
-                                                }
-                                                else { Console.WriteLine("Kugel/Kasten kann sich nicht bewegen"); return false; }
+                                                    point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
+                                                    if (Uberprufung(point, false, panel1.Controls[i]))
+                                                    {
+                                                        panel1.Controls[i].Location = point;
+                                                    }
+                                                    else { Console.WriteLine("Kugel/Kasten kann sich nicht bewegen"); return false; }
+                                                }while(IsEis);
                                             }
                                         }
                                     }
@@ -390,6 +414,11 @@ namespace Pushy
                                     bar.Tag = "Barrier";
                                     panel1.Controls.Add(bar);
                                 }
+                                while (IsEis)
+                                {
+                                    point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
+                                    if(Uberprufung(point, false, panel1.Controls[f])) panel1.Controls[f].Location = point;
+                                }
                                 teleport = true;
                                 return true;
                             }
@@ -451,6 +480,11 @@ namespace Pushy
                                     bar.BackColor = Color.Green;
                                     bar.Tag = "Barrier";
                                     panel1.Controls.Add(bar);
+                                }
+                                while (IsEis)
+                                {
+                                    point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
+                                    if (Uberprufung(point, false, panel1.Controls[f])) panel1.Controls[f].Location = point;
                                 }
                                 teleport = true;
                                 return true;
@@ -514,6 +548,11 @@ namespace Pushy
                                     bar.BackColor = Color.Green;
                                     bar.Tag = "Barrier";
                                     panel1.Controls.Add(bar);
+                                }
+                                while (IsEis)
+                                {
+                                    point.Offset((PlayerLocation.X - Player.Location.X), (PlayerLocation.Y - Player.Location.Y));
+                                    if (Uberprufung(point, false, panel1.Controls[f])) panel1.Controls[f].Location = point;
                                 }
                                 teleport = true;
                                 return true;
