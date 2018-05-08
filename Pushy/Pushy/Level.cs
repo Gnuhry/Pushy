@@ -355,6 +355,7 @@ namespace Pushy
                                         }
                                     }
                             }
+                            if (!IsPlayer && speicher.IsPlayerTeleport(level)) return true;
                                 for(int g = 0; g < panel1.Controls.Count; g++) //Suche nach anderem Teleporter
                                 {
                                     if (panel1.Controls[f].Tag + "" == panel1.Controls[g].Tag + "" && f != g)
@@ -705,6 +706,7 @@ namespace Pushy
                 panel1.Controls.Add(bar);
             }
             Console.WriteLine("Frei");
+            tp = false;
             return true;
         }
         private void Knopf_Aktiv()

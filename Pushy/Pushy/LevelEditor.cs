@@ -286,9 +286,9 @@ namespace Pushy
             if (Player2C == 1 && Haus2C != 1) { MessageBox.Show("Zweites Haus fehlt"); Fehler++; }
             if (Fehler > 0) return;
             if (!beatbeiten)
-                speicher.Add(panel1.Controls, panel1.Size, Hohe, Breite, txBName.Text,Level);
+                speicher.Add(panel1.Controls, panel1.Size, Hohe, Breite, txBName.Text,checkBox2.Checked,Level);
             else
-                speicher.Add(panel1.Controls,panel1.Size,Hohe,Breite,txBName.Text);
+                speicher.Add(panel1.Controls,panel1.Size,Hohe,Breite,txBName.Text,checkBox2.Checked);
             speicher.speichern(Directory.GetCurrentDirectory()+@"\Datenbank.txt");
             MessageBox.Show("Erfolgreich gespeichert");
             button1.Visible =button2.Visible= true;

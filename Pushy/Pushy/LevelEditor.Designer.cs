@@ -55,6 +55,7 @@
             this.lbBombe = new System.Windows.Forms.Label();
             this.lbLoch = new System.Windows.Forms.Label();
             this.lbEis = new System.Windows.Forms.Label();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numHohe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBreite)).BeginInit();
@@ -361,11 +362,22 @@
             this.lbEis.Text = "Eis";
             this.lbEis.Click += new System.EventHandler(this.label_Click);
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(41, 70);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(117, 17);
+            this.checkBox2.TabIndex = 31;
+            this.checkBox2.Text = "Nur Player Teleport";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 450);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.lbEis);
             this.Controls.Add(this.lbLoch);
             this.Controls.Add(this.lbBombe);
@@ -434,5 +446,6 @@
         private System.Windows.Forms.Label lbBombe;
         private System.Windows.Forms.Label lbLoch;
         private System.Windows.Forms.Label lbEis;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }

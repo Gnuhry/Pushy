@@ -15,19 +15,19 @@ namespace Pushy
         {
             controlCollections = new List<string[]>();
         }
-        public void Add(Control.ControlCollection Controls,Size PanelSize,int Hohe, int Breite, string Name)
+        public void Add(Control.ControlCollection Controls,Size PanelSize,int Hohe, int Breite, string Name,bool PlayerTeleport)
         {
             if (Name.Trim() == "" || Name.Trim() == null) Name = "No Name";
             string[] temp = new string[Controls.Count+1];
-            temp[0] = Name + "," + Hohe + ";" + Breite+"#"+int.MaxValue;
+            temp[0] = Name + "," + Hohe + ";" + Breite+"#"+int.MaxValue+"-"+PlayerTeleport;
             for(int f = 1; f < temp.Length; f++)
                 temp[f] = Controls[f - 1].Tag + "," + Controls[f - 1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f - 1].Location.Y / (PanelSize.Width / Breite);
             controlCollections.Add(temp);
         }
-        public void Add(Control.ControlCollection Controls, Size PanelSize, int Hohe, int Breite, string Name,int index)
+        public void Add(Control.ControlCollection Controls, Size PanelSize, int Hohe, int Breite, string Name, bool PlayerTeleport,int index)
         {
             string[] temp = new string[Controls.Count+1];
-            temp[0] = Name + "," + Hohe + ";" + Breite + "#" + controlCollections[index][0].Split('#')[1];
+            temp[0] = Name + "," + Hohe + ";" + Breite + "#" + controlCollections[index][0].Split('#')[1] + "-" + PlayerTeleport;
             for (int f = 1; f < temp.Length; f++)
                 temp[f] = Controls[f-1].Tag + "," + Controls[f-1].Location.X / (PanelSize.Height / Hohe) + ";" + Controls[f-1].Location.Y / (PanelSize.Width / Breite);
             controlCollections[index]=(temp);
@@ -65,6 +65,7 @@ namespace Pushy
 
         }
         public string[] GetText(int Levelindex) => controlCollections[Levelindex];
+        public bool IsPlayerTeleport(int Levelindex) => Convert.ToBoolean(controlCollections[Levelindex][0].Split('-')[1]);
         public void Remove(int Levelindex) => controlCollections.RemoveAt(Levelindex);
         public Control[] GetControls(int Levelindex,Size size)//Eine Size
         {
