@@ -234,6 +234,11 @@
             // 
             // numHohe
             // 
+            this.numHohe.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.numHohe.Location = new System.Drawing.Point(672, 283);
             this.numHohe.Maximum = new decimal(new int[] {
             30,
@@ -257,6 +262,11 @@
             // 
             // numBreite
             // 
+            this.numBreite.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.numBreite.Location = new System.Drawing.Point(633, 283);
             this.numBreite.Maximum = new decimal(new int[] {
             30,
